@@ -2,6 +2,7 @@
 <html lang="fr" class="dark">
 <head>
   <meta charset="UTF-8" />
+  <meta name="google-site-verification" content="nD9PM4wmb32gTNNhhoJrNMm1icWOukvmQCj40lUwDl0" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>RevStack AI — Comparateur & Annuaire des Outils d'IA Vente et Prospection B2B</title>
   <meta name="description" content="Comparez les meilleurs logiciels d'IA pour la prospection B2B, le cold email, l'enrichissement de données et l'automatisation commerciale." />
@@ -70,7 +71,7 @@
     </div>
   </header>
 
-  <!-- Cockpit Admin, Gestion des Liens & Outreach (Sans toucher au code) -->
+  <!-- Cockpit Admin, Gestion des Liens & Outreach -->
   <div id="mrr-dashboard" class="hidden bg-slate-900/95 border-b border-indigo-500/40 py-8">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
       <div class="flex justify-between items-center">
@@ -126,7 +127,7 @@ L'équipe RevStack AI (degale369@gmail.com)</textarea>
         <!-- Éditeur Visuel de Liens d'Affiliation -->
         <div class="glass-panel p-5 rounded-2xl border border-slate-700/80">
           <h3 class="font-display font-bold text-sm text-white mb-2">🔗 Configurer vos Vrais Liens d'Affiliation</h3>
-          <p class="text-xs text-slate-400 mb-3">Sélectionnez un outil et collez votre lien affilié unique (sauvegardé dans votre navigateur) :</p>
+          <p class="text-xs text-slate-400 mb-3">Sélectionnez un outil et collez votre lien affilié unique :</p>
           <div class="space-y-3">
             <select id="admin-tool-select" onchange="loadSelectedToolUrl()" class="w-full px-3 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-xs text-white"></select>
             <input type="url" id="admin-tool-url" placeholder="https://outil.com/?ref=votre-id" class="w-full px-3 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-xs text-white" />
@@ -208,7 +209,7 @@ L'équipe RevStack AI (degale369@gmail.com)</textarea>
       <div id="tools-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
     </section>
 
-    <!-- Section Capture Newsletter / Dealflow B2B (Liée à votre courriel) -->
+    <!-- Section Capture Newsletter / Dealflow B2B -->
     <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
       <div class="sponsored-card rounded-3xl p-8 sm:p-10 text-center">
         <span class="inline-block text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 mb-3">Brief Hebdomadaire Gratuit</span>
@@ -233,7 +234,7 @@ L'équipe RevStack AI (degale369@gmail.com)</textarea>
     <p class="text-xs text-slate-600 max-w-xl mx-auto">Transparence : Certains liens présents sur RevStack AI sont des liens d'affiliation. Si vous souscrivez via ces liens, nous pouvons percevoir une commission sans aucun frais supplémentaire pour vous.</p>
   </footer>
 
-  <!-- Modal de Fiche Détaillée / Comparatif (Conversion) -->
+  <!-- Modal de Fiche Détaillée -->
   <div id="detail-modal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 z-50">
     <div class="bg-slate-900 border border-slate-700 rounded-3xl p-6 sm:p-8 max-w-xl w-full shadow-2xl relative">
       <button onclick="closeDetailModal()" class="absolute top-5 right-5 text-slate-400 hover:text-white text-lg">✕</button>
@@ -271,7 +272,7 @@ L'équipe RevStack AI (degale369@gmail.com)</textarea>
     </div>
   </div>
 
-  <!-- Script Logique Complète -->
+  <!-- Script Logique -->
   <script>
     const defaultTools = [
       { id: 1, name: "Apollo.io", category: "Prospection & Cold Email", price: "Freemium • 99 $/m", tagline: "Base de 275M+ contacts B2B + séquences de prospection IA.", details: "Idéal pour les équipes commerciales voulant combiner base de données B2B vérifiée, enrichissement et envoi de séquences automatisées au même endroit.", rating: 4.8, commission: "30% récurrent", sponsored: true, url: "https://apollo.io" },
@@ -279,223 +280,4 @@ L'équipe RevStack AI (degale369@gmail.com)</textarea>
       { id: 3, name: "Clay", category: "Enrichissement de Données", price: "Dès 149 $/mois", tagline: "Enrichissement en cascade (50+ sources) + agents de recherche IA.", details: "Permet d'automatiser la recherche ultra-personnalisée sur chaque prospect avant d'envoyer un message.", rating: 4.9, commission: "30% récurrent", sponsored: true, url: "https://clay.com" },
       { id: 4, name: "Lemlist", category: "Prospection & Cold Email", price: "99 $/mois", tagline: "Prospection multicanale Email + LinkedIn avec personnalisation IA.", details: "Parfait pour créer des campagnes combinant visites de profil LinkedIn, messages vocaux et e-mails personnalisés.", rating: 4.7, commission: "30% récurrent", sponsored: false, url: "https://lemlist.com" },
       { id: 5, name: "Smartlead.ai", category: "Prospection & Cold Email", price: "94 $/mois", tagline: "Infrastructure haute délivrabilité conçue pour les agences B2B.", details: "Gestion multi-clients centralisée avec rotation automatique des boîtes d'envoi et boîte de réception unifiée.", rating: 4.8, commission: "30% récurrent", sponsored: false, url: "https://smartlead.ai" },
-      { id: 6, name: "Make", category: "Automatisation & Workflows", price: "Freemium • 59 $/m", tagline: "1800+ intégrations + scénarios visuels connectés à OpenAI/Claude.", details: "Le moteur idéal pour relier votre CRM, vos formulaires et vos agents IA sans écrire de code.", rating: 4.8, commission: "35% récurrent", sponsored: false, url: "https://make.com" },
-      { id: 7, name: "n8n", category: "Automatisation & Workflows", price: "Freemium • 20 $/m", tagline: "Automatisation avancée avec nœuds d'agents IA et LangChain.", details: "Offre une flexibilité totale pour bâtir des flux de prospection et de qualification autonomes.", rating: 4.9, commission: "30% récurrent", sponsored: false, url: "https://n8n.io" },
-      { id: 8, name: "HubSpot Breeze", category: "CRM & Pipeline IA", price: "Freemium", tagline: "Agents IA natifs intégrés au CRM pour accélérer le closing.", details: "Automatise la rédaction des suivis, l'analyse des deals et l'enrichissement des fiches contacts.", rating: 4.6, commission: "20%", sponsored: false, url: "https://hubspot.com" },
-      { id: 9, name: "Pipedrive AI", category: "CRM & Pipeline IA", price: "79 $/mois", tagline: "CRM orienté action avec assistant commercial prédictif.", details: "Identifie les opportunités à plus forte probabilité de signature et suggère les prochaines actions.", rating: 4.6, commission: "33% récurrent", sponsored: false, url: "https://pipedrive.com" },
-      { id: 10, name: "Synthflow", category: "Agents Vocaux & Chat", price: "149 $/mois", tagline: "Agents téléphoniques IA sans code pour qualification et prise de RDV.", details: "Déployez un standardiste ou un SDR vocal capable d'appeler et qualifier vos leads entrants 24/7.", rating: 4.7, commission: "35% récurrent", sponsored: false, url: "https://synthflow.ai" },
-      { id: 11, name: "Bland AI", category: "Agents Vocaux & Chat", price: "À l'usage", tagline: "Infrastructure d'appels téléphoniques IA ultra-réalistes à grande échelle.", details: "Conçu pour automatiser les campagnes d'appels sortants et le suivi client par téléphone.", rating: 4.7, commission: "30%", sponsored: false, url: "https://bland.ai" },
-      { id: 12, name: "Reply.io", category: "Prospection & Cold Email", price: "89 $/mois", tagline: "SDR IA multicanal qui gère la prospection et réserve les rendez-vous.", details: "Automatise la recherche de prospects, l'envoi multicanal et le traitement des réponses.", rating: 4.6, commission: "30% récurrent", sponsored: false, url: "https://reply.io" },
-      { id: 13, name: "ZoomInfo", category: "Enrichissement de Données", price: "Enterprise", tagline: "Données d'intention d'achat B2B + Copilot commercial IA.", details: "Détecte les entreprises qui recherchent activement vos solutions sur le web.", rating: 4.6, commission: "20%", sponsored: false, url: "https://zoominfo.com" },
-      { id: 14, name: "Lusha", category: "Enrichissement de Données", price: "Freemium • 49 $/m", tagline: "Extension Chrome pour numéros directs et e-mails B2B vérifiés.", details: "Permet de récupérer instantanément les coordonnées des décideurs directement depuis LinkedIn.", rating: 4.5, commission: "30% récurrent", sponsored: false, url: "https://lusha.com" },
-      { id: 15, name: "Gong", category: "CRM & Pipeline IA", price: "Enterprise", tagline: "Intelligence conversationnelle et prévision de revenus par IA.", details: "Analyse tous vos appels commerciaux pour repérer les objections et coacher vos équipes.", rating: 4.9, commission: "25%", sponsored: false, url: "https://gong.io" },
-      { id: 16, name: "Close CRM", category: "CRM & Pipeline IA", price: "99 $/mois", tagline: "CRM tout-en-un avec appels, SMS et séquences e-mails intégrés.", details: "Taillé pour les équipes de vente interne qui veulent maximiser leur volume d'appels et de closings.", rating: 4.7, commission: "30% récurrent", sponsored: false, url: "https://close.com" },
-      { id: 17, name: "LaGrowthMachine", category: "Prospection & Cold Email", price: "60 $/mois", tagline: "Automatisation multicanale LinkedIn + Email + Twitter/X.", details: "Crée des séquences visuelles avancées pour engager les prospects sur plusieurs canaux.", rating: 4.8, commission: "30% récurrent", sponsored: false, url: "https://lagrowthmachine.com" },
-      { id: 18, name: "Waalaxy", category: "Prospection & Cold Email", price: "Freemium • 56 $/m", tagline: "Prospection automatisée sur LinkedIn et par e-mail ultra-simple.", details: "Prise en main immédiate pour lancer ses premières campagnes d'acquisition B2B.", rating: 4.6, commission: "30% récurrent", sponsored: false, url: "https://waalaxy.com" }
-    ];
-
-    // Chargement des personnalisations locales (liens d'affiliation ajoutés via le cockpit)
-    let tools = JSON.parse(localStorage.getItem('revstack_tools')) || defaultTools;
-    let totalClicks = parseInt(localStorage.getItem('revstack_clicks')) || 0;
-
-    function saveState() {
-      localStorage.setItem('revstack_tools', JSON.stringify(tools));
-      localStorage.setItem('revstack_clicks', totalClicks.toString());
-      updateStats();
-    }
-
-    function updateStats() {
-      const sponsoredCount = tools.filter(t => t.sponsored).length;
-      const sponsorRevenue = sponsoredCount * 399;
-      document.getElementById('stat-sponsor').innerHTML = `${sponsorRevenue.toLocaleString()} $ <span class="text-xs font-normal text-emerald-400">(${sponsoredCount} fiches épinglées)</span>`;
-      document.getElementById('stat-clicks').innerHTML = `${totalClicks} clic${totalClicks > 1 ? 's' : ''} <span class="text-xs font-normal text-indigo-300">(Suivi actif)</span>`;
-    }
-
-    function trackClick(id) {
-      totalClicks++;
-      saveState();
-    }
-
-    function renderTools(list = tools) {
-      // Toujours afficher les sponsorisés en premier
-      const sorted = [...list].sort((a, b) => (b.sponsored === a.sponsored) ? 0 : b.sponsored ? 1 : -1);
-      const grid = document.getElementById('tools-grid');
-      
-      if (sorted.length === 0) {
-        grid.innerHTML = `<div class="col-span-full text-center py-12 text-slate-400">Aucun outil trouvé pour cette recherche.</div>`;
-        return;
-      }
-
-      grid.innerHTML = sorted.map(tool => `
-        <div class="${tool.sponsored ? 'sponsored-card' : 'glass-panel'} rounded-2xl p-6 flex flex-col justify-between hover:border-indigo-500/60 transition group">
-          <div>
-            <div class="flex justify-between items-start mb-3 gap-2">
-              <div>
-                ${tool.sponsored ? '<span class="inline-block text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md bg-indigo-500 text-white mb-2 shadow-sm">⭐ Top Choice / Sponsorisé</span>' : ''}
-                <h3 class="font-display font-bold text-lg text-white group-hover:text-indigo-400 transition">${tool.name}</h3>
-              </div>
-              <span class="text-[11px] px-2.5 py-1 rounded-full bg-slate-800/90 text-slate-300 border border-slate-700 text-right">${tool.category}</span>
-            </div>
-            <p class="text-sm text-slate-400 mb-6 leading-relaxed">${tool.tagline}</p>
-          </div>
-          <div>
-            <div class="flex justify-between items-center text-sm mb-4 pt-4 border-t border-slate-800/80">
-              <span class="text-emerald-400 font-semibold">${tool.price}</span>
-              <span class="text-amber-400 font-medium">★ ${tool.rating}</span>
-            </div>
-            <div class="flex items-center justify-between gap-2">
-              <button onclick="openDetailModal(${tool.id})" class="px-3 py-2 rounded-xl text-xs font-medium bg-slate-800 hover:bg-slate-700 text-slate-300 transition">
-                Fiche & Avis
-              </button>
-              <a href="${tool.url}" onclick="trackClick(${tool.id})" target="_blank" rel="noopener noreferrer" class="flex-1 justify-center px-4 py-2 rounded-xl text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white transition flex items-center gap-1.5 shadow-md">
-                Visiter l'outil <span class="text-[10px]">↗</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      `).join('');
-    }
-
-    function filterTools() {
-      const q = document.getElementById('search').value.toLowerCase();
-      const cat = document.getElementById('category-filter').value;
-      
-      const filtered = tools.filter(t => {
-        const matchesQ = t.name.toLowerCase().includes(q) || t.tagline.toLowerCase().includes(q) || t.category.toLowerCase().includes(q);
-        const matchesCat = cat === "" || t.category === cat;
-        return matchesQ && matchesCat;
-      });
-      renderTools(filtered);
-    }
-
-    function quickFilter(category) {
-      document.getElementById('category-filter').value = category;
-      filterTools();
-    }
-
-    function resetFilters() {
-      document.getElementById('search').value = '';
-      document.getElementById('category-filter').value = '';
-      renderTools(tools);
-    }
-
-    function updateSim(val) {
-      document.getElementById('sim-prospects').innerText = parseInt(val).toLocaleString();
-      const minDeals = Math.round(val * 0.03);
-      const maxDeals = Math.round(val * 0.045);
-      document.getElementById('sim-deals').innerText = `${minDeals}-${maxDeals}`;
-    }
-
-    // Fonctions du Cockpit Admin
-    function toggleDashboard() {
-      const dash = document.getElementById('mrr-dashboard');
-      dash.classList.toggle('hidden');
-      if (!dash.classList.contains('hidden')) {
-        populateAdminSelect();
-        updateStats();
-      }
-    }
-
-    function populateAdminSelect() {
-      const select = document.getElementById('admin-tool-select');
-      select.innerHTML = tools.map(t => `<option value="${t.id}">${t.name} (${t.sponsored ? 'Sponsorisé' : 'Standard'})</option>`).join('');
-      loadSelectedToolUrl();
-    }
-
-    function loadSelectedToolUrl() {
-      const id = parseInt(document.getElementById('admin-tool-select').value);
-      const tool = tools.find(t => t.id === id);
-      if (tool) {
-        document.getElementById('admin-tool-url').value = tool.url;
-        document.getElementById('admin-tool-sponsored').checked = tool.sponsored;
-      }
-    }
-
-    function saveCustomAffiliate() {
-      const id = parseInt(document.getElementById('admin-tool-select').value);
-      const newUrl = document.getElementById('admin-tool-url').value;
-      const isSponsored = document.getElementById('admin-tool-sponsored').checked;
-      
-      const idx = tools.findIndex(t => t.id === id);
-      if (idx !== -1 && newUrl) {
-        tools[idx].url = newUrl;
-        tools[idx].sponsored = isSponsored;
-        saveState();
-        renderTools();
-        alert(`Lien et statut mis à jour pour ${tools[idx].name} !`);
-      }
-    }
-
-    function copyOutreach() {
-      const copyText = document.getElementById("outreach-template");
-      copyText.select();
-      navigator.clipboard.writeText(copyText.value);
-      const btn = document.getElementById("copy-btn");
-      btn.innerText = "✅ Courriel copié ! Prêt à coller";
-      setTimeout(() => { btn.innerText = "📋 Copier le courriel de prospection"; }, 3000);
-    }
-
-    // Modales
-    function openDetailModal(id) {
-      const tool = tools.find(t => t.id === id);
-      if (!tool) return;
-      document.getElementById('detail-content').innerHTML = `
-        <div class="mb-4">
-          <span class="text-xs px-2.5 py-1 rounded-full bg-indigo-500/20 text-indigo-300 font-medium">${tool.category}</span>
-          <h3 class="text-2xl font-display font-bold text-white mt-3">${tool.name}</h3>
-          <p class="text-emerald-400 font-semibold text-sm mt-1">${tool.price} • Note : ★ ${tool.rating}/5</p>
-        </div>
-        <p class="text-slate-300 text-sm leading-relaxed mb-4">${tool.tagline}</p>
-        <div class="bg-slate-800/60 p-4 rounded-2xl border border-slate-700/80 mb-6">
-          <h4 class="text-xs font-bold uppercase tracking-wider text-indigo-300 mb-1">Verdict RevStack AI</h4>
-          <p class="text-xs text-slate-300 leading-relaxed">${tool.details}</p>
-        </div>
-        <div class="flex gap-3">
-          <a href="${tool.url}" onclick="trackClick(${tool.id})" target="_blank" rel="noopener noreferrer" class="flex-1 text-center py-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-sm transition shadow-lg shadow-indigo-600/30">
-            Accéder à ${tool.name} ↗
-          </a>
-        </div>
-      `;
-      document.getElementById('detail-modal').classList.remove('hidden');
-    }
-
-    function closeDetailModal() {
-      document.getElementById('detail-modal').classList.add('hidden');
-    }
-
-    function openSubmitModal() {
-      document.getElementById('modal').classList.remove('hidden');
-    }
-    
-    function closeModal() {
-      document.getElementById('modal').classList.add('hidden');
-    }
-
-    function handleFormSubmit(e) {
-      e.preventDefault();
-      const name = document.getElementById('tool-name').value;
-      const url = document.getElementById('tool-url').value;
-      const type = document.getElementById('sub-type').value;
-      
-      const subject = encodeURIComponent(`[RevStack AI] Nouvelle demande : ${name} (${type})`);
-      const body = encodeURIComponent(`Bonjour,\n\nNouvelle demande de référencement/sponsoring sur RevStack AI :\n\n- Outil : ${name}\n- Lien : ${url}\n- Formule : ${type}\n\nMerci de me recontacter pour la mise en ligne.`);
-      
-      window.location.href = `mailto:degale369@gmail.com?subject=${subject}&body=${body}`;
-      closeModal();
-    }
-
-    function handleNewsletterSubmit(e) {
-      e.preventDefault();
-      const email = document.getElementById('lead-email').value;
-      const subject = encodeURIComponent(`[RevStack AI] Nouvel abonné Newsletter B2B`);
-      const body = encodeURIComponent(`Nouvelle inscription au Brief Hebdomadaire RevStack AI :\n\nAdresse courriel : ${email}`);
-      window.location.href = `mailto:degale369@gmail.com?subject=${subject}&body=${body}`;
-      document.getElementById('lead-email').value = '';
-    }
-
-    // Initialisation
-    renderTools();
-    updateStats();
-  </script>
-</body>
-</html>
+      { id: 6, na
