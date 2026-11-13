@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fr" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RevStack AI — Annuaire des Outils d'IA Vente, Prospection & Automatisation B2B</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Plus Jakarta Sans', 'sans-serif'],
+          },
+          colors: {
+            obsidian: '#0B0F19',
+            surface: '#111827',
+            card: '#151D2E',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { background-color: #0B0F19; color: #F8FAFC; }
+    .glass-panel {
+      background: rgba(21, 29, 46, 0.78);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .sponsored-panel {
+      background: linear-gradient(145deg, rgba(26, 35, 58, 0.92) 0%, rgba(17, 24, 39, 0.9) 100%);
+      border: 1px solid rgba(99, 102, 241, 0.45);
+      box-shadow: 0 12px 32px -12px rgba(99, 102, 241, 0.22);
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col font-sans antialiased">
+
+  <header class="sticky top-0 z-40 border-b border-slate-800/80 bg-[#0B0F19]/90 backdrop-blur-lg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between py-4">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 to-emerald-500 flex items-center justify-center">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+            </svg>
+          </div>
+          <div>
+            <span class="font-display font-extrabold text-xl text-white">RevStack<span class="text-indigo-400">AI</span></span>
+            <p class="text-xs text-slate-400">Outils IA Vente & Prospection B2B</p>
+          </div>
+        </div>
+        <button onclick="openSubmitModal()" class="px-4 py-2 rounded-xl text-sm font-medium bg-indigo-600 hover:bg-indigo-500 text-white transition">
+          Soumettre un outil / Devenir Sponsor
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-1">
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-center">
+      <h1 class="font-display text-4xl sm:text-5xl font-extrabold text-white mb-4">
+        Les meilleurs outils d'IA pour la <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-emerald-400">vente et la prospection B2B</span>
+      </h1>
+      <p class="text-slate-400 text-lg max-w-2xl mx-auto mb-8">
+        Comparez les plateformes de cold email, enrichissement de données, CRM IA et agents vocaux. Trouvez les outils qui génèrent vraiment du pipeline.
+      </p>
+      <input type="text" id="search" oninput="filterTools()" placeholder="Rechercher un outil (Apollo, Clay, Instantly...)" class="w-full max-w-xl mx-auto px-5 py-4 rounded-2xl bg-slate-900 border border-slate-700 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+    </section>
+
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+      <div id="tools-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    </section>
+  </main>
+
+  <footer class="border-t border-slate-800 py-8 text-center text-sm text-slate-500">
+    RevStack AI — Annuaire indépendant d'outils B2B
+  </footer>
+
+  <!-- Modal simple -->
+  <div id="modal" class="hidden fixed inset-0 bg-black/70 flex items-center justify-center p-4 z-50">
+    <div class="bg-slate-900 border border-slate-700 rounded-2xl p-6 max-w-md w-full">
+      <h3 class="text-xl font-bold mb-4">Soumettre un outil ou devenir sponsor</h3>
+      <p class="text-slate-400 text-sm mb-4">Emplacements sponsorisés : 399 $/mois. Affiliation disponible sur la plupart des outils.</p>
+      <button onclick="closeModal()" class="px-4 py-2 bg-slate-700 rounded-xl text-sm">Fermer</button>
+    </div>
+  </div>
+
+  <script>
+    const tools = [
+      { name: "Apollo.io", category: "Prospection & Cold Email", price: "Freemium • 99 $/m", tagline: "Base de 275M+ contacts + séquences IA", rating: 4.8, commission: "30%" },
+      { name: "Instantly.ai", category: "Prospection & Cold Email", price: "97 $/mois", tagline: "Cold email illimité + warmup automatique", rating: 4.7, commission: "35%" },
+      { name: "Lemlist", category: "Prospection & Cold Email", price: "99 $/mois", tagline: "Multicanal Email + LinkedIn avec images dynamiques", rating: 4.7, commission: "30%" },
+      { name: "Smartlead.ai", category: "Prospection & Cold Email", price: "94 $/mois", tagline: "Infrastructure haute délivrabilité pour agences", rating: 4.8, commission: "30%" },
+      { name: "Clay", category: "Enrichissement de Données", price: "Dès 149 $/mois", tagline: "Waterfall enrichment + agents de recherche", rating: 4.9, commission: "30%" },
+      { name: "ZoomInfo", category: "Enrichissement de Données", price: "Enterprise", tagline: "Données d'intention + Copilot IA", rating: 4.6, commission: "20%" },
+      { name: "Lusha", category: "Enrichissement de Données", price: "Freemium • 49 $/m", tagline: "Extension Chrome + mobiles vérifiés", rating: 4.5, commission: "30%" },
+      { name: "HubSpot Breeze", category: "CRM & Pipeline IA", price: "Freemium", tagline: "Agents IA natifs pour prospection et deals", rating: 4.6, commission: "20%" },
+      { name: "Gong", category: "CRM & Pipeline IA", price: "Enterprise", tagline: "Analyse d'appels et prévision de pipeline", rating: 4.9, commission: "25%" },
+      { name: "Pipedrive AI", category: "CRM & Pipeline IA", price: "79 $/mois", tagline: "CRM orienté action avec assistant IA", rating: 4.6, commission: "33%" },
+      { name: "n8n", category: "Automatisation & Workflows", price: "Freemium", tagline: "Workflows avancés + agents LangChain", rating: 4.9, commission: "30%" },
+      { name: "Make", category: "Automatisation & Workflows", price: "Freemium • 59 $/m", tagline: "1800+ intégrations + scénarios visuels", rating: 4.8, commission: "35%" },
+      { name: "Bland AI", category: "Agents Vocaux & Chat", price: "Usage", tagline: "Agents téléphoniques IA ultra-réalistes", rating: 4.7, commission: "30%" },
+      { name: "Synthflow", category: "Agents Vocaux & Chat", price: "149 $/mois", tagline: "SDR et réceptionnistes vocaux sans code", rating: 4.7, commission: "35%" },
+      { name: "Reply.io", category: "Prospection & Cold Email", price: "89 $/mois", tagline: "AI SDR multicanal + prise de rendez-vous", rating: 4.6, commission: "30%" }
+    ];
+
+    function renderTools(list = tools) {
+      const grid = document.getElementById('tools-grid');
+      grid.innerHTML = list.map(tool => `
+        <div class="glass-panel rounded-2xl p-6 hover:border-indigo-500/40 transition">
+          <div class="flex justify-between items-start mb-3">
+            <h3 class="font-display font-bold text-lg">${tool.name}</h3>
+            <span class="text-xs px-2 py-1 rounded-full bg-indigo-500/20 text-indigo-300">${tool.category}</span>
+          </div>
+          <p class="text-sm text-slate-400 mb-4">${tool.tagline}</p>
+          <div class="flex justify-between items-center text-sm">
+            <span class="text-emerald-400 font-medium">${tool.price}</span>
+            <span class="text-slate-300">★ ${tool.rating}</span>
+          </div>
+          <div class="mt-3 text-xs text-indigo-300">Commission : ${tool.commission}</div>
+        </div>
+      `).join('');
+    }
+
+    function filterTools() {
+      const q = document.getElementById('search').value.toLowerCase();
+      const filtered = tools.filter(t => 
+        t.name.toLowerCase().includes(q) || 
+        t.tagline.toLowerCase().includes(q) ||
+        t.category.toLowerCase().includes(q)
+      );
+      renderTools(filtered);
+    }
+
+    function openSubmitModal() {
+      document.getElementById('modal').classList.remove('hidden');
+    }
+    function closeModal() {
+      document.getElementById('modal').classList.add('hidden');
+    }
+
+    renderTools();
+  </script>
+</body>
+</html>
