@@ -42,7 +42,7 @@
 </head>
 <body class="min-h-screen flex flex-col font-sans antialiased">
 
-  <!-- En-tête -->
+  <!-- En-tête principal -->
   <header class="sticky top-0 z-40 border-b border-slate-800/80 bg-[#0B0F19]/90 backdrop-blur-lg">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between py-4">
@@ -70,27 +70,27 @@
     </div>
   </header>
 
-  <!-- Cockpit Financier (Masqué par défaut, activable) -->
-  <div id="mrr-dashboard" class="hidden bg-slate-900/90 border-b border-indigo-500/30 py-6">
+  <!-- Cockpit Financier et de Suivi (Activable) -->
+  <div id="mrr-dashboard" class="hidden bg-slate-900/95 border-b border-indigo-500/30 py-6">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-center mb-4">
         <h2 class="font-display font-bold text-lg text-white flex items-center gap-2">
           <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-          Cockpit de Monétisation & Projections RevStack AI
+          Pilotage des Revenus & Pipeline RevStack AI
         </h2>
-        <button onclick="toggleDashboard()" class="text-slate-400 hover:text-white text-sm">Fermer ✕</button>
+        <button onclick="toggleDashboard()" class="text-slate-400 hover:text-white text-sm font-medium">Fermer ✕</button>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div class="glass-panel p-4 rounded-xl border border-indigo-500/20">
           <p class="text-xs text-slate-400">Revenus Sponsoring Actifs (399$/m)</p>
-          <p class="text-2xl font-bold text-white mt-1">1 197 $ <span class="text-xs font-normal text-emerald-400">(3 sponsors)</span></p>
+          <p class="text-2xl font-bold text-white mt-1">1 197 $ <span class="text-xs font-normal text-emerald-400">(3 fiches épinglées)</span></p>
         </div>
         <div class="glass-panel p-4 rounded-xl border border-indigo-500/20">
-          <p class="text-xs text-slate-400">Commissions Affiliation Estimées</p>
-          <p class="text-2xl font-bold text-white mt-1">1 450 $ <span class="text-xs font-normal text-emerald-400">(28 conversions)</span></p>
+          <p class="text-xs text-slate-400">Commissions Affiliation (Estimées)</p>
+          <p class="text-2xl font-bold text-white mt-1">1 450 $ <span class="text-xs font-normal text-emerald-400">(28 conversions actives)</span></p>
         </div>
         <div class="glass-panel p-4 rounded-xl border border-indigo-500/20 bg-gradient-to-br from-indigo-950/40 to-slate-900">
-          <p class="text-xs text-indigo-300 font-semibold">MRR Total Visé / Actuel</p>
+          <p class="text-xs text-indigo-300 font-semibold">MRR Actuel / Potentiel</p>
           <p class="text-2xl font-extrabold text-indigo-400 mt-1">2 647 $ <span class="text-xs font-normal text-slate-300">/ mois</span></p>
         </div>
       </div>
@@ -98,10 +98,10 @@
   </div>
 
   <main class="flex-1">
-    <!-- Hero & Recherche -->
+    <!-- Section Héroïque & Recherche -->
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-center">
       <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-xs font-medium mb-6">
-        🔥 Plus de 15 solutions logicielles B2B indexées et monétisables
+        🔥 Plus de 15 solutions logicielles B2B hautement convertissantes indexées
       </div>
       <h1 class="font-display text-4xl sm:text-5xl font-extrabold text-white mb-4 tracking-tight">
         Les meilleurs outils d'IA pour la <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-emerald-400">vente et la prospection B2B</span>
@@ -124,11 +124,11 @@
       </div>
     </section>
 
-    <!-- Mini Simulateur ROI B2B Intégré (Levier de conversion) -->
+    <!-- Simulateur ROI B2B Interactif (Convertisseur de prospects) -->
     <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
       <div class="glass-panel p-6 rounded-3xl border border-indigo-500/30 flex flex-col md:flex-row items-center justify-between gap-6">
         <div>
-          <h3 class="font-display font-bold text-white text-lg mb-1">Simulateur de Pipeline IA</h3>
+          <h3 class="font-display font-bold text-white text-lg mb-1">Simulateur de Pipeline Commercial IA</h3>
           <p class="text-slate-400 text-sm">Estimez l'impact d'un stack d'outils de prospection automatisée sur vos rendez-vous mensuels.</p>
         </div>
         <div class="flex items-center gap-4 bg-slate-900/80 px-6 py-3 rounded-2xl border border-slate-800">
@@ -146,7 +146,7 @@
       </div>
     </section>
 
-    <!-- Grille des Outils -->
+    <!-- Grille des Outils Dynamique -->
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
       <div id="tools-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
     </section>
@@ -157,10 +157,10 @@
     <p class="text-xs text-slate-600">Certains liens de cette plateforme sont des liens d'affiliation générant une commission sans surcoût pour vous.</p>
   </footer>
 
-  <!-- Modal de Soumission / Sponsoring -->
+  <!-- Modal de Soumission & Paiement Sponsoring -->
   <div id="modal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 z-50">
     <div class="bg-slate-900 border border-slate-700 rounded-3xl p-6 sm:p-8 max-w-lg w-full shadow-2xl relative">
-      <button onclick="closeModal()" class="absolute top-5 right-5 text-slate-400 hover:text-white">✕</button>
+      <button onclick="closeModal()" class="absolute top-5 right-5 text-slate-400 hover:text-white text-lg">✕</button>
       <h3 class="text-2xl font-display font-bold text-white mb-2">Référencer un outil ou Devenir Sponsor</h3>
       <p class="text-slate-400 text-sm mb-6">Mettez votre solution en avant auprès de milliers de décideurs B2B. Emplacements "Featured" à 399 $/mois.</p>
       
@@ -175,19 +175,19 @@
         </div>
         <div>
           <label class="block text-xs font-medium text-slate-300 mb-1">Type de visibilité souhaitée</label>
-          <select class="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
+          <select id="sub-type" class="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
             <option value="free">Référencement standard (Gratuit)</option>
             <option value="sponsored">Sponsoring "Featured Listing" (399 $ / mois)</option>
           </select>
         </div>
         <button type="submit" class="w-full py-4 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold transition shadow-lg shadow-indigo-600/30">
-          Soumettre la demande
+          Soumettre et Valider
         </button>
       </form>
     </div>
   </div>
 
-  <!-- Script Logique & Données -->
+  <!-- Script Logique et Moteur de l'Annuaire -->
   <script>
     const tools = [
       { id: 1, name: "Apollo.io", category: "Prospection & Cold Email", price: "Freemium • 99 $/m", tagline: "Base de 275M+ contacts + séquences IA", rating: 4.8, commission: "30% récurrent", sponsored: true, url: "https://apollo.io" },
@@ -204,12 +204,16 @@
 
     function renderTools(list = tools) {
       const grid = document.getElementById('tools-grid');
+      if (list.length === 0) {
+        grid.innerHTML = `<div class="col-span-full text-center py-12 text-slate-400">Aucun outil trouvé pour cette recherche.</div>`;
+        return;
+      }
       grid.innerHTML = list.map(tool => `
         <div class="${tool.sponsored ? 'sponsored-card' : 'glass-panel'} rounded-2xl p-6 flex flex-col justify-between hover:border-indigo-500/60 transition group">
           <div>
             <div class="flex justify-between items-start mb-3">
               <div>
-                ${tool.sponsored ? '<span class="inline-block text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md bg-indigo-500 text-white mb-2">⭐ Sponsorisé / Featured</span>' : ''}
+                ${tool.sponsored ? '<span class="inline-block text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md bg-indigo-500 text-white mb-2 shadow-sm">⭐ Sponsorisé / Featured</span>' : ''}
                 <h3 class="font-display font-bold text-lg text-white group-hover:text-indigo-400 transition">${tool.name}</h3>
               </div>
               <span class="text-xs px-2.5 py-1 rounded-full bg-slate-800/80 text-slate-300 border border-slate-700">${tool.category}</span>
@@ -223,7 +227,7 @@
             </div>
             <div class="flex items-center justify-between gap-3">
               <span class="text-xs text-indigo-300 font-medium">Affiliation : ${tool.commission}</span>
-              <a href="${tool.url}" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-xl text-xs font-semibold bg-indigo-600/80 hover:bg-indigo-500 text-white transition flex items-center gap-1.5">
+              <a href="${tool.url}" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-xl text-xs font-semibold bg-indigo-600/80 hover:bg-indigo-500 text-white transition flex items-center gap-1.5 shadow-md">
                 Essayer <span class="text-[10px]">↗</span>
               </a>
             </div>
@@ -266,11 +270,16 @@
 
     function handleFormSubmit(e) {
       e.preventDefault();
-      alert("Merci ! Votre demande de référencement ou de sponsoring a bien été transmise. Un administrateur validera l'intégration sous 24h.");
+      const type = document.getElementById('sub-type').value;
+      if(type === 'sponsored') {
+        alert("Redirection vers la passerelle de paiement sécurisée Stripe pour l'activation du pack Sponsoring à 399 $/mois...");
+      } else {
+        alert("Merci ! Votre outil a bien été soumis pour évaluation et sera intégré sous 24h.");
+      }
       closeModal();
     }
 
-    // Initialisation
+    // Initialisation au chargement
     renderTools();
   </script>
 </body>
