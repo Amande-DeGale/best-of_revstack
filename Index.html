@@ -33,20 +33,21 @@
       backdrop-filter: blur(14px);
       border: 1px solid rgba(255, 255, 255, 0.08);
     }
-    .sponsored-panel {
-      background: linear-gradient(145deg, rgba(26, 35, 58, 0.92) 0%, rgba(17, 24, 39, 0.9) 100%);
-      border: 1px solid rgba(99, 102, 241, 0.45);
-      box-shadow: 0 12px 32px -12px rgba(99, 102, 241, 0.22);
+    .sponsored-card {
+      background: linear-gradient(145deg, rgba(30, 41, 59, 0.95) 0%, rgba(17, 24, 39, 0.9) 100%);
+      border: 1px solid rgba(99, 102, 241, 0.5);
+      box-shadow: 0 10px 30px -10px rgba(99, 102, 241, 0.25);
     }
   </style>
 </head>
 <body class="min-h-screen flex flex-col font-sans antialiased">
 
+  <!-- En-tête -->
   <header class="sticky top-0 z-40 border-b border-slate-800/80 bg-[#0B0F19]/90 backdrop-blur-lg">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between py-4">
         <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 to-emerald-500 flex items-center justify-center">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 to-emerald-500 flex items-center justify-center shadow-lg shadow-indigo-500/20">
             <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
             </svg>
@@ -56,96 +57,220 @@
             <p class="text-xs text-slate-400">Outils IA Vente & Prospection B2B</p>
           </div>
         </div>
-        <button onclick="openSubmitModal()" class="px-4 py-2 rounded-xl text-sm font-medium bg-indigo-600 hover:bg-indigo-500 text-white transition">
-          Soumettre un outil / Devenir Sponsor
-        </button>
+        <div class="flex items-center gap-3">
+          <button onclick="toggleDashboard()" class="hidden sm:inline-flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-medium bg-slate-800 hover:bg-slate-700 text-indigo-300 border border-slate-700 transition">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+            Cockpit MRR & Sponsor
+          </button>
+          <button onclick="openSubmitModal()" class="px-4 py-2 rounded-xl text-sm font-medium bg-gradient-to-r from-indigo-600 to-indigo-500 hover:from-indigo-500 hover:to-indigo-400 text-white shadow-lg shadow-indigo-600/20 transition">
+            Soumettre / Sponsoriser (399$/m)
+          </button>
+        </div>
       </div>
     </div>
   </header>
 
+  <!-- Cockpit Financier (Masqué par défaut, activable) -->
+  <div id="mrr-dashboard" class="hidden bg-slate-900/90 border-b border-indigo-500/30 py-6">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center mb-4">
+        <h2 class="font-display font-bold text-lg text-white flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          Cockpit de Monétisation & Projections RevStack AI
+        </h2>
+        <button onclick="toggleDashboard()" class="text-slate-400 hover:text-white text-sm">Fermer ✕</button>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="glass-panel p-4 rounded-xl border border-indigo-500/20">
+          <p class="text-xs text-slate-400">Revenus Sponsoring Actifs (399$/m)</p>
+          <p class="text-2xl font-bold text-white mt-1">1 197 $ <span class="text-xs font-normal text-emerald-400">(3 sponsors)</span></p>
+        </div>
+        <div class="glass-panel p-4 rounded-xl border border-indigo-500/20">
+          <p class="text-xs text-slate-400">Commissions Affiliation Estimées</p>
+          <p class="text-2xl font-bold text-white mt-1">1 450 $ <span class="text-xs font-normal text-emerald-400">(28 conversions)</span></p>
+        </div>
+        <div class="glass-panel p-4 rounded-xl border border-indigo-500/20 bg-gradient-to-br from-indigo-950/40 to-slate-900">
+          <p class="text-xs text-indigo-300 font-semibold">MRR Total Visé / Actuel</p>
+          <p class="text-2xl font-extrabold text-indigo-400 mt-1">2 647 $ <span class="text-xs font-normal text-slate-300">/ mois</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <main class="flex-1">
+    <!-- Hero & Recherche -->
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-center">
-      <h1 class="font-display text-4xl sm:text-5xl font-extrabold text-white mb-4">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-xs font-medium mb-6">
+        🔥 Plus de 15 solutions logicielles B2B indexées et monétisables
+      </div>
+      <h1 class="font-display text-4xl sm:text-5xl font-extrabold text-white mb-4 tracking-tight">
         Les meilleurs outils d'IA pour la <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-emerald-400">vente et la prospection B2B</span>
       </h1>
       <p class="text-slate-400 text-lg max-w-2xl mx-auto mb-8">
-        Comparez les plateformes de cold email, enrichissement de données, CRM IA et agents vocaux. Trouvez les outils qui génèrent vraiment du pipeline.
+        Comparez les plateformes de cold email, enrichissement de données, CRM IA et agents vocaux. Générez du pipeline qualifié dès aujourd'hui.
       </p>
-      <input type="text" id="search" oninput="filterTools()" placeholder="Rechercher un outil (Apollo, Clay, Instantly...)" class="w-full max-w-xl mx-auto px-5 py-4 rounded-2xl bg-slate-900 border border-slate-700 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+      
+      <!-- Barre de recherche & Filtres -->
+      <div class="max-w-2xl mx-auto flex flex-col sm:flex-row gap-3">
+        <input type="text" id="search" oninput="filterTools()" placeholder="Rechercher par nom, mot-clé (Apollo, Clay, Make...)" class="flex-1 px-5 py-4 rounded-2xl bg-slate-900/90 border border-slate-700 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+        <select id="category-filter" onchange="filterTools()" class="px-4 py-4 rounded-2xl bg-slate-900/90 border border-slate-700 text-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+          <option value="">Toutes les catégories</option>
+          <option value="Prospection & Cold Email">Prospection & Cold Email</option>
+          <option value="Enrichissement de Données">Enrichissement de Données</option>
+          <option value="CRM & Pipeline IA">CRM & Pipeline IA</option>
+          <option value="Automatisation & Workflows">Automatisation & Workflows</option>
+          <option value="Agents Vocaux & Chat">Agents Vocaux & Chat</option>
+        </select>
+      </div>
     </section>
 
+    <!-- Mini Simulateur ROI B2B Intégré (Levier de conversion) -->
+    <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+      <div class="glass-panel p-6 rounded-3xl border border-indigo-500/30 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div>
+          <h3 class="font-display font-bold text-white text-lg mb-1">Simulateur de Pipeline IA</h3>
+          <p class="text-slate-400 text-sm">Estimez l'impact d'un stack d'outils de prospection automatisée sur vos rendez-vous mensuels.</p>
+        </div>
+        <div class="flex items-center gap-4 bg-slate-900/80 px-6 py-3 rounded-2xl border border-slate-800">
+          <div>
+            <span class="text-xs text-slate-400 block">Prospects / mois</span>
+            <span id="sim-prospects" class="text-lg font-bold text-white">1,500</span>
+          </div>
+          <span class="text-indigo-400 font-bold">→</span>
+          <div>
+            <span class="text-xs text-slate-400 block">RDV Qualifiés / mois</span>
+            <span id="sim-deals" class="text-lg font-bold text-emerald-400">45-60</span>
+          </div>
+          <input type="range" id="sim-range" min="500" max="5000" step="500" value="1500" oninput="updateSim(this.value)" class="ml-4 accent-indigo-500 cursor-pointer hidden sm:block">
+        </div>
+      </div>
+    </section>
+
+    <!-- Grille des Outils -->
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
       <div id="tools-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
     </section>
   </main>
 
-  <footer class="border-t border-slate-800 py-8 text-center text-sm text-slate-500">
-    RevStack AI — Annuaire indépendant d'outils B2B
+  <footer class="border-t border-slate-800 py-8 bg-slate-950 text-center text-sm text-slate-500">
+    <p class="mb-2">RevStack AI — Annuaire indépendant d'outils B2B & Sponsoring automatisé</p>
+    <p class="text-xs text-slate-600">Certains liens de cette plateforme sont des liens d'affiliation générant une commission sans surcoût pour vous.</p>
   </footer>
 
-  <!-- Modal simple -->
-  <div id="modal" class="hidden fixed inset-0 bg-black/70 flex items-center justify-center p-4 z-50">
-    <div class="bg-slate-900 border border-slate-700 rounded-2xl p-6 max-w-md w-full">
-      <h3 class="text-xl font-bold mb-4">Soumettre un outil ou devenir sponsor</h3>
-      <p class="text-slate-400 text-sm mb-4">Emplacements sponsorisés : 399 $/mois. Affiliation disponible sur la plupart des outils.</p>
-      <button onclick="closeModal()" class="px-4 py-2 bg-slate-700 rounded-xl text-sm">Fermer</button>
+  <!-- Modal de Soumission / Sponsoring -->
+  <div id="modal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+    <div class="bg-slate-900 border border-slate-700 rounded-3xl p-6 sm:p-8 max-w-lg w-full shadow-2xl relative">
+      <button onclick="closeModal()" class="absolute top-5 right-5 text-slate-400 hover:text-white">✕</button>
+      <h3 class="text-2xl font-display font-bold text-white mb-2">Référencer un outil ou Devenir Sponsor</h3>
+      <p class="text-slate-400 text-sm mb-6">Mettez votre solution en avant auprès de milliers de décideurs B2B. Emplacements "Featured" à 399 $/mois.</p>
+      
+      <form onsubmit="handleFormSubmit(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-medium text-slate-300 mb-1">Nom de l'outil ou de l'entreprise</label>
+          <input type="text" required class="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="ex: MySalesAI">
+        </div>
+        <div>
+          <label class="block text-xs font-medium text-slate-300 mb-1">Lien Web / URL d'affiliation</label>
+          <input type="url" required class="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="https://votre-site.com/?ref=revstack">
+        </div>
+        <div>
+          <label class="block text-xs font-medium text-slate-300 mb-1">Type de visibilité souhaitée</label>
+          <select class="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
+            <option value="free">Référencement standard (Gratuit)</option>
+            <option value="sponsored">Sponsoring "Featured Listing" (399 $ / mois)</option>
+          </select>
+        </div>
+        <button type="submit" class="w-full py-4 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold transition shadow-lg shadow-indigo-600/30">
+          Soumettre la demande
+        </button>
+      </form>
     </div>
   </div>
 
+  <!-- Script Logique & Données -->
   <script>
     const tools = [
-      { name: "Apollo.io", category: "Prospection & Cold Email", price: "Freemium • 99 $/m", tagline: "Base de 275M+ contacts + séquences IA", rating: 4.8, commission: "30%" },
-      { name: "Instantly.ai", category: "Prospection & Cold Email", price: "97 $/mois", tagline: "Cold email illimité + warmup automatique", rating: 4.7, commission: "35%" },
-      { name: "Lemlist", category: "Prospection & Cold Email", price: "99 $/mois", tagline: "Multicanal Email + LinkedIn avec images dynamiques", rating: 4.7, commission: "30%" },
-      { name: "Smartlead.ai", category: "Prospection & Cold Email", price: "94 $/mois", tagline: "Infrastructure haute délivrabilité pour agences", rating: 4.8, commission: "30%" },
-      { name: "Clay", category: "Enrichissement de Données", price: "Dès 149 $/mois", tagline: "Waterfall enrichment + agents de recherche", rating: 4.9, commission: "30%" },
-      { name: "ZoomInfo", category: "Enrichissement de Données", price: "Enterprise", tagline: "Données d'intention + Copilot IA", rating: 4.6, commission: "20%" },
-      { name: "Lusha", category: "Enrichissement de Données", price: "Freemium • 49 $/m", tagline: "Extension Chrome + mobiles vérifiés", rating: 4.5, commission: "30%" },
-      { name: "HubSpot Breeze", category: "CRM & Pipeline IA", price: "Freemium", tagline: "Agents IA natifs pour prospection et deals", rating: 4.6, commission: "20%" },
-      { name: "Gong", category: "CRM & Pipeline IA", price: "Enterprise", tagline: "Analyse d'appels et prévision de pipeline", rating: 4.9, commission: "25%" },
-      { name: "Pipedrive AI", category: "CRM & Pipeline IA", price: "79 $/mois", tagline: "CRM orienté action avec assistant IA", rating: 4.6, commission: "33%" },
-      { name: "n8n", category: "Automatisation & Workflows", price: "Freemium", tagline: "Workflows avancés + agents LangChain", rating: 4.9, commission: "30%" },
-      { name: "Make", category: "Automatisation & Workflows", price: "Freemium • 59 $/m", tagline: "1800+ intégrations + scénarios visuels", rating: 4.8, commission: "35%" },
-      { name: "Bland AI", category: "Agents Vocaux & Chat", price: "Usage", tagline: "Agents téléphoniques IA ultra-réalistes", rating: 4.7, commission: "30%" },
-      { name: "Synthflow", category: "Agents Vocaux & Chat", price: "149 $/mois", tagline: "SDR et réceptionnistes vocaux sans code", rating: 4.7, commission: "35%" },
-      { name: "Reply.io", category: "Prospection & Cold Email", price: "89 $/mois", tagline: "AI SDR multicanal + prise de rendez-vous", rating: 4.6, commission: "30%" }
+      { id: 1, name: "Apollo.io", category: "Prospection & Cold Email", price: "Freemium • 99 $/m", tagline: "Base de 275M+ contacts + séquences IA", rating: 4.8, commission: "30% récurrent", sponsored: true, url: "https://apollo.io" },
+      { id: 2, name: "Instantly.ai", category: "Prospection & Cold Email", price: "97 $/mois", tagline: "Cold email illimité + warmup automatique", rating: 4.7, commission: "35% récurrent", sponsored: true, url: "https://instantly.ai" },
+      { id: 3, name: "Clay", category: "Enrichissement de Données", price: "Dès 149 $/mois", tagline: "Waterfall enrichment + agents de recherche", rating: 4.9, commission: "30% récurrent", sponsored: true, url: "https://clay.com" },
+      { id: 4, name: "Lemlist", category: "Prospection & Cold Email", price: "99 $/mois", tagline: "Multicanal Email + LinkedIn avec images dynamiques", rating: 4.7, commission: "30% récurrent", sponsored: false, url: "https://lemlist.com" },
+      { id: 5, name: "Smartlead.ai", category: "Prospection & Cold Email", price: "94 $/mois", tagline: "Infrastructure haute délivrabilité pour agences", rating: 4.8, commission: "30% récurrent", sponsored: false, url: "https://smartlead.ai" },
+      { id: 6, name: "ZoomInfo", category: "Enrichissement de Données", price: "Enterprise", tagline: "Données d'intention + Copilot IA", rating: 4.6, commission: "20%", sponsored: false, url: "https://zoominfo.com" },
+      { id: 7, name: "HubSpot Breeze", category: "CRM & Pipeline IA", price: "Freemium", tagline: "Agents IA natifs pour prospection et deals", rating: 4.6, commission: "20%", sponsored: false, url: "https://hubspot.com" },
+      { id: 8, name: "Make", category: "Automatisation & Workflows", price: "Freemium • 59 $/m", tagline: "1800+ intégrations + scénarios visuels", rating: 4.8, commission: "35% récurrent", sponsored: false, url: "https://make.com" },
+      { id: 9, name: "Synthflow", category: "Agents Vocaux & Chat", price: "149 $/mois", tagline: "SDR et réceptionnistes vocaux sans code", rating: 4.7, commission: "35% récurrent", sponsored: false, url: "https://synthflow.ai" },
+      { id: 10, name: "Reply.io", category: "Prospection & Cold Email", price: "89 $/mois", tagline: "AI SDR multicanal + prise de rendez-vous", rating: 4.6, commission: "30% récurrent", sponsored: false, url: "https://reply.io" }
     ];
 
     function renderTools(list = tools) {
       const grid = document.getElementById('tools-grid');
       grid.innerHTML = list.map(tool => `
-        <div class="glass-panel rounded-2xl p-6 hover:border-indigo-500/40 transition">
-          <div class="flex justify-between items-start mb-3">
-            <h3 class="font-display font-bold text-lg">${tool.name}</h3>
-            <span class="text-xs px-2 py-1 rounded-full bg-indigo-500/20 text-indigo-300">${tool.category}</span>
+        <div class="${tool.sponsored ? 'sponsored-card' : 'glass-panel'} rounded-2xl p-6 flex flex-col justify-between hover:border-indigo-500/60 transition group">
+          <div>
+            <div class="flex justify-between items-start mb-3">
+              <div>
+                ${tool.sponsored ? '<span class="inline-block text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md bg-indigo-500 text-white mb-2">⭐ Sponsorisé / Featured</span>' : ''}
+                <h3 class="font-display font-bold text-lg text-white group-hover:text-indigo-400 transition">${tool.name}</h3>
+              </div>
+              <span class="text-xs px-2.5 py-1 rounded-full bg-slate-800/80 text-slate-300 border border-slate-700">${tool.category}</span>
+            </div>
+            <p class="text-sm text-slate-400 mb-6">${tool.tagline}</p>
           </div>
-          <p class="text-sm text-slate-400 mb-4">${tool.tagline}</p>
-          <div class="flex justify-between items-center text-sm">
-            <span class="text-emerald-400 font-medium">${tool.price}</span>
-            <span class="text-slate-300">★ ${tool.rating}</span>
+          <div>
+            <div class="flex justify-between items-center text-sm mb-4 pt-4 border-t border-slate-800/80">
+              <span class="text-emerald-400 font-semibold">${tool.price}</span>
+              <span class="text-amber-400 font-medium">★ ${tool.rating}</span>
+            </div>
+            <div class="flex items-center justify-between gap-3">
+              <span class="text-xs text-indigo-300 font-medium">Affiliation : ${tool.commission}</span>
+              <a href="${tool.url}" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-xl text-xs font-semibold bg-indigo-600/80 hover:bg-indigo-500 text-white transition flex items-center gap-1.5">
+                Essayer <span class="text-[10px]">↗</span>
+              </a>
+            </div>
           </div>
-          <div class="mt-3 text-xs text-indigo-300">Commission : ${tool.commission}</div>
         </div>
       `).join('');
     }
 
     function filterTools() {
       const q = document.getElementById('search').value.toLowerCase();
-      const filtered = tools.filter(t => 
-        t.name.toLowerCase().includes(q) || 
-        t.tagline.toLowerCase().includes(q) ||
-        t.category.toLowerCase().includes(q)
-      );
+      const cat = document.getElementById('category-filter').value;
+      
+      const filtered = tools.filter(t => {
+        const matchesQ = t.name.toLowerCase().includes(q) || t.tagline.toLowerCase().includes(q) || t.category.toLowerCase().includes(q);
+        const matchesCat = cat === "" || t.category === cat;
+        return matchesQ && matchesCat;
+      });
       renderTools(filtered);
+    }
+
+    function updateSim(val) {
+      document.getElementById('sim-prospects').innerText = parseInt(val).toLocaleString();
+      const minDeals = Math.round(val * 0.03);
+      const maxDeals = Math.round(val * 0.045);
+      document.getElementById('sim-deals').innerText = `${minDeals}-${maxDeals}`;
+    }
+
+    function toggleDashboard() {
+      const dash = document.getElementById('mrr-dashboard');
+      dash.classList.toggle('hidden');
     }
 
     function openSubmitModal() {
       document.getElementById('modal').classList.remove('hidden');
     }
+    
     function closeModal() {
       document.getElementById('modal').classList.add('hidden');
     }
 
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      alert("Merci ! Votre demande de référencement ou de sponsoring a bien été transmise. Un administrateur validera l'intégration sous 24h.");
+      closeModal();
+    }
+
+    // Initialisation
     renderTools();
   </script>
 </body>
