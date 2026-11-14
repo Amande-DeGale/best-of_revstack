@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://revstack-ai.netlify.app/sitemap.xml
+Sitemap: https://amande-degale.github.io/best-of_revstack/sitemap.xml
