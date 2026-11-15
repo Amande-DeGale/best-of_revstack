@@ -117,7 +117,7 @@
             "name": "Comment apparaître dans l'annuaire ?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "La liste gratuite se demande par courriel. L'emplacement en tête de page est à 399 $ par mois, un seul à la fois."
+              "text": "La liste gratuite se demande par courriel. L'emplacement en tête de page est à 99 $ par mois, un seul à la fois."
             }
           }
         ]
@@ -159,178 +159,187 @@
 <body class="min-h-screen font-sans antialiased">
 <header class="sticky top-0 z-40 border-b border-slate-800/80 bg-[#0B0F19]/90 backdrop-blur-lg">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="flex items-center justify-between py-4">
+<div class="flex items-center justify-between flex-wrap gap-2 py-4">
 <div class="flex items-center gap-3">
 <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 to-emerald-500 flex items-center justify-center">
 <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
 </div>
 <div>
 <span class="font-display font-extrabold text-xl text-white">Best of <span class="text-indigo-400">RevStack</span></span>
-<p class="text-xs text-slate-400">Outils IA Vente & Prospection B2B</p>
+<p data-i18n="brand.tagline" class="text-xs text-slate-400">Outils IA Vente & Prospection B2B</p>
 </div>
 </div>
-<a href="comparatifs/" class="px-4 py-2 rounded-xl text-sm font-medium text-slate-200 hover:text-white transition text-center">Comparatifs</a>
-<a href="#audit" class="px-4 py-2 rounded-xl text-sm font-medium text-slate-200 hover:text-white transition text-center">Audit gratuit</a>
-<a href="#sponsor" class="px-4 py-2 rounded-xl text-sm font-medium bg-indigo-600 hover:bg-indigo-500 text-white transition text-center">Devenir sponsor</a>
+<a data-i18n="nav.comparatifs" href="comparatifs/" class="px-4 py-2 rounded-xl text-sm font-medium text-slate-200 hover:text-white transition text-center">Comparatifs</a>
+<a data-i18n="nav.audit" href="#audit" class="px-4 py-2 rounded-xl text-sm font-medium text-slate-200 hover:text-white transition text-center">Audit gratuit</a>
+<a data-i18n="nav.sponsor" href="#sponsor" class="px-4 py-2 rounded-xl text-sm font-medium bg-indigo-600 hover:bg-indigo-500 text-white transition text-center">Devenir sponsor</a>
+<div class="flex items-center rounded-xl border-2 border-indigo-400 overflow-hidden text-base font-bold" role="group" aria-label="Langue / Language">
+<button type="button" id="lang-fr" onclick="setLang('fr')" class="px-4 py-2.5 bg-white text-slate-950">FR</button>
+<button type="button" id="lang-en" onclick="setLang('en')" class="px-4 py-2.5 bg-slate-800 text-slate-200 hover:text-white">EN</button>
+</div>
 </div>
 </div>
 </header>
 <main class="flex-1">
 <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-center">
-<h1 class="font-display text-4xl sm:text-5xl font-extrabold text-white mb-4">Les meilleurs outils d'IA pour la <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-emerald-400">vente et la prospection B2B</span></h1>
-<p class="text-slate-400 text-lg max-w-2xl mx-auto mb-8">Comparatif pour choisir un outil de cold email, d'enrichissement de contacts ou d'automatisation. Une recommandation claire par besoin, puis le catalogue complet.</p>
-<input type="search" id="search" oninput="filterTools()" placeholder="Rechercher un outil ou une alternative (Apollo, Clay, Instantly...)" class="w-full max-w-xl mx-auto px-5 py-4 rounded-2xl bg-slate-900 border border-slate-700 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+<h1 data-i18n="hero.title" class="font-display text-4xl sm:text-5xl font-extrabold text-white mb-4">Les meilleurs outils d'IA pour la <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-emerald-400">vente et la prospection B2B</span></h1>
+<p data-i18n="hero.subtitle" class="text-slate-400 text-lg max-w-2xl mx-auto mb-0">Comparatif pour choisir un outil de cold email, d'enrichissement de contacts ou d'automatisation. Une recommandation claire par besoin, puis le catalogue complet.</p>
+</section>
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+<h2 data-i18n="picks.title" class="font-display text-2xl font-bold mb-2">Quoi choisir selon le besoin</h2>
+<p data-i18n="picks.subtitle" class="text-slate-400 mb-6">Ce sont les recherches qui amènent des gens prêts à s'inscrire. Chaque ligne mène à un outil.</p>
+<div id="picks" class="grid grid-cols-1 md:grid-cols-3 gap-4"></div>
+</section>
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center">
+<input type="search" id="search" oninput="filterTools()" data-i18n-ph="search.ph" placeholder="Rechercher un outil ou une alternative (Apollo, Clay, Instantly...)" class="w-full max-w-xl mx-auto px-5 py-4 rounded-2xl bg-slate-900 border border-slate-700 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+</section>
 </section>
 <section id="simulateur" class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
 <article class="glass-panel rounded-3xl border border-indigo-500/30 p-6 sm:p-8">
-<p class="text-xs font-semibold tracking-wide uppercase text-indigo-300 mb-2">Simulateur ROI</p>
-<h2 class="font-display text-2xl font-bold mb-2">Simulateur de pipeline et de ROI</h2>
-<p class="text-slate-400 text-sm mb-1">Estimez combien de rendez-vous qualifiés et de revenus un stack de prospection peut vous apporter, selon vos chiffres.</p>
-<p class="text-xs text-amber-300 mb-6">Tous les chiffres ci-dessous sont des exemples — modifiez les chiffres avec vos propres données. Aucun taux n'est un fait vérifié.</p>
+<p data-i18n="sim.eyebrow" class="text-xs font-semibold tracking-wide uppercase text-indigo-300 mb-2">Simulateur ROI</p>
+<h2 data-i18n="sim.title" class="font-display text-2xl font-bold mb-2">Simulateur de pipeline et de ROI</h2>
+<p data-i18n="sim.desc" class="text-slate-400 text-sm mb-1">Estimez combien de rendez-vous qualifiés et de revenus un stack de prospection peut vous apporter, selon vos chiffres.</p>
+<p data-i18n="sim.warn" class="text-xs text-amber-300 mb-6">Tous les chiffres ci-dessous sont des exemples — modifiez les chiffres avec vos propres données. Aucun taux n'est un fait vérifié.</p>
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
 <div class="sm:col-span-2">
-<label for="sim-prospects" class="block text-xs font-medium text-slate-300 mb-1">Prospects contactés / mois (exemple : 1 500)</label>
+<label data-i18n="sim.l.prospects" for="sim-prospects" class="block text-xs font-medium text-slate-300 mb-1">Prospects contactés / mois (exemple : 1 500)</label>
 <div class="flex items-center gap-4">
 <input type="range" id="sim-prospects-range" min="500" max="5000" step="500" value="1500" class="flex-1 accent-indigo-500" />
 <input type="number" id="sim-prospects" min="0" max="100000" step="100" value="1500" class="w-28 px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500" />
 </div>
 </div>
 <div>
-<label for="sim-taux-min" class="block text-xs font-medium text-slate-300 mb-1">Taux prospect → RDV, min. % (exemple : 3 %)</label>
+<label data-i18n="sim.l.taux-min" for="sim-taux-min" class="block text-xs font-medium text-slate-300 mb-1">Taux prospect → RDV, min. % (exemple : 3 %)</label>
 <input type="number" id="sim-taux-min" min="0" max="100" step="0.5" value="3" class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500" />
 </div>
 <div>
-<label for="sim-taux-max" class="block text-xs font-medium text-slate-300 mb-1">Taux prospect → RDV, max. % (exemple : 4,5 %)</label>
+<label data-i18n="sim.l.taux-max" for="sim-taux-max" class="block text-xs font-medium text-slate-300 mb-1">Taux prospect → RDV, max. % (exemple : 4,5 %)</label>
 <input type="number" id="sim-taux-max" min="0" max="100" step="0.5" value="4.5" class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500" />
 </div>
 <div>
-<label for="sim-taux-closing" class="block text-xs font-medium text-slate-300 mb-1">Taux RDV → client % (exemple : 20 %)</label>
+<label data-i18n="sim.l.taux-closing" for="sim-taux-closing" class="block text-xs font-medium text-slate-300 mb-1">Taux RDV → client % (exemple : 20 %)</label>
 <input type="number" id="sim-taux-closing" min="0" max="100" step="1" value="20" class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500" />
 </div>
 <div>
-<label for="sim-valeur-client" class="block text-xs font-medium text-slate-300 mb-1">Valeur moyenne d'un client, $ (exemple : 1 000 $)</label>
+<label data-i18n="sim.l.valeur-client" for="sim-valeur-client" class="block text-xs font-medium text-slate-300 mb-1">Valeur moyenne d'un client, $ (exemple : 1 000 $)</label>
 <input type="number" id="sim-valeur-client" min="0" max="1000000" step="50" value="1000" class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500" />
 </div>
 <div>
-<label for="sim-cout-outils" class="block text-xs font-medium text-slate-300 mb-1">Coût mensuel des outils, $ (exemple : 100 $)</label>
+<label data-i18n="sim.l.cout-outils" for="sim-cout-outils" class="block text-xs font-medium text-slate-300 mb-1">Coût mensuel des outils, $ (exemple : 100 $)</label>
 <input type="number" id="sim-cout-outils" min="0" max="100000" step="10" value="100" class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500" />
 </div>
 </div>
 <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 bg-slate-900/80 px-5 py-4 rounded-2xl border border-slate-800">
 <div>
-<span class="text-xs text-slate-400 block">RDV qualifiés / mois</span>
+<span data-i18n="sim.r.rdv" class="text-xs text-slate-400 block">RDV qualifiés / mois</span>
 <span id="sim-rdv" class="text-lg font-bold text-white">45 – 68</span>
 </div>
 <div>
-<span class="text-xs text-slate-400 block">Nouveaux clients / mois</span>
+<span data-i18n="sim.r.clients" class="text-xs text-slate-400 block">Nouveaux clients / mois</span>
 <span id="sim-clients" class="text-lg font-bold text-emerald-400">9 – 14</span>
 </div>
 <div>
-<span class="text-xs text-slate-400 block">Revenus estimés / mois</span>
+<span data-i18n="sim.r.revenus" class="text-xs text-slate-400 block">Revenus estimés / mois</span>
 <span id="sim-revenus" class="text-lg font-bold text-emerald-400">9 000 $ – 13 500 $</span>
 </div>
 <div>
-<span class="text-xs text-slate-400 block">ROI estimé</span>
+<span data-i18n="sim.r.roi" class="text-xs text-slate-400 block">ROI estimé</span>
 <span id="sim-roi" class="text-lg font-bold text-emerald-400">8 900 % – 13 400 %</span>
 </div>
 </div>
-<p class="text-xs text-slate-500 mt-4">Estimation indicative seulement : les taux par défaut (3 % à 4,5 % prospect → RDV, 20 % RDV → client) sont des exemples à remplacer par vos chiffres réels. Vos résultats dépendront de votre liste, de vos messages et de votre offre.</p>
+<p data-i18n="sim.note" class="text-xs text-slate-500 mt-4">Estimation indicative seulement : les taux par défaut (3 % à 4,5 % prospect → RDV, 20 % RDV → client) sont des exemples à remplacer par vos chiffres réels. Vos résultats dépendront de votre liste, de vos messages et de votre offre.</p>
 </article>
 </section>
-<section id="sponsor" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
-<article class="sponsor-panel rounded-2xl p-6 sm:p-8">
-<p class="text-xs font-semibold tracking-wide uppercase text-amber-300 mb-2">Emplacement sponsor — un seul, en tête</p>
-<h2 class="font-display text-2xl font-bold mb-2">Votre outil devant le catalogue</h2>
-<p class="text-slate-400 mb-5">399 $ par mois. Inclus : la fiche en haut de page et le badge Sponsor.</p>
-<ul class="text-sm text-slate-300 space-y-2 mb-6 list-disc list-inside">
-<li>Position au-dessus de toutes les autres fiches</li>
-<li>Sans engagement affiché au-delà du mois en cours</li>
-</ul>
-<div class="flex flex-col sm:flex-row gap-3">
-<a id="reserve-sponsor" class="inline-flex justify-center px-5 py-3 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-semibold transition" href="#">Réserver cet emplacement</a>
-<a id="soumettre-outil" class="inline-flex justify-center px-5 py-3 rounded-xl border border-white/15 hover:bg-white/5 font-medium transition" href="#">Soumettre un outil gratuitement</a>
-</div>
-</article>
-</section>
+
 <section id="audit" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
 <article class="glass-panel rounded-2xl p-6 sm:p-8">
-<p class="text-xs font-semibold tracking-wide uppercase text-emerald-300 mb-2">Audit gratuit</p>
-<h2 class="font-display text-2xl font-bold mb-2">Recevoir mon audit gratuit</h2>
-<p class="text-slate-400 mb-6">On regarde vos outils de vente et de prospection, vos séquences et vos automatisations, et on vous dit ce qui vous fait perdre des rendez-vous. Réponse par courriel.</p>
+<p data-i18n="audit.eyebrow" class="text-xs font-semibold tracking-wide uppercase text-emerald-300 mb-2">Audit gratuit</p>
+<h2 data-i18n="audit.title" class="font-display text-2xl font-bold mb-2">Recevoir mon audit gratuit</h2>
+<p data-i18n="audit.desc" class="text-slate-400 mb-6">On regarde vos outils de vente et de prospection, vos séquences et vos automatisations, et on vous dit ce qui vous fait perdre des rendez-vous. Réponse par courriel.</p>
 <form id="audit-form" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-<input type="text" id="audit-nom" required placeholder="Votre nom" class="px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
-<input type="email" id="audit-courriel" required placeholder="Courriel professionnel" class="px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
-<input type="text" id="audit-entreprise" placeholder="Entreprise" class="px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
-<input type="text" id="audit-outils" placeholder="Outils utilisés actuellement" class="px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
-<textarea id="audit-probleme" rows="3" placeholder="Votre plus gros problème (ex. : peu de réponses aux courriels, pipeline qui fuit...)" class="sm:col-span-2 px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
-<button type="submit" class="sm:col-span-2 inline-flex justify-center px-5 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-semibold transition">Envoyer ma demande d'audit</button>
+<input type="text" id="audit-nom" required data-i18n-ph="audit.ph.name" placeholder="Votre nom" class="px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+<input type="email" id="audit-courriel" required data-i18n-ph="audit.ph.email" placeholder="Courriel professionnel" class="px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+<input type="text" id="audit-entreprise" data-i18n-ph="audit.ph.company" placeholder="Entreprise" class="px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+<input type="text" id="audit-outils" data-i18n-ph="audit.ph.tools" placeholder="Outils utilisés actuellement" class="px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+<textarea id="audit-probleme" rows="3" data-i18n-ph="audit.ph.problem" placeholder="Votre plus gros problème (ex. : peu de réponses aux courriels, pipeline qui fuit...)" class="sm:col-span-2 px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
+<button data-i18n="audit.submit" type="submit" class="sm:col-span-2 inline-flex justify-center px-5 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-semibold transition">Envoyer ma demande d'audit</button>
 </form>
-<p id="audit-confirm" class="hidden text-sm text-emerald-300 mt-4">Votre demande s'ouvre dans votre courriel — envoyez-la pour recevoir votre audit.</p>
+<p data-i18n="audit.confirm" id="audit-confirm" class="hidden text-sm text-emerald-300 mt-4">Votre demande s'ouvre dans votre courriel — envoyez-la pour recevoir votre audit.</p>
 </article>
 </section>
+
 <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
-<h2 class="font-display text-2xl font-bold mb-2">Quoi choisir selon le besoin</h2>
-<p class="text-slate-400 mb-6">Ce sont les recherches qui amènent des gens prêts à s'inscrire. Chaque ligne mène à un outil.</p>
-<div id="picks" class="grid grid-cols-1 md:grid-cols-3 gap-4"></div>
-</section>
-<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
-<h2 class="font-display text-2xl font-bold mb-6">Catalogue des outils</h2>
+<h2 data-i18n="cat.title" class="font-display text-2xl font-bold mb-6">Catalogue des outils</h2>
 <div id="filters" class="flex flex-wrap gap-2 mb-6"></div>
 <div id="tools-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
 </section>
 <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
-<h2 class="font-display text-2xl font-bold mb-2">Outils gratuits</h2>
-<p class="text-slate-400 mb-6">Deux calculateurs gratuits, sans inscription : tout est calculé dans votre navigateur à partir de vos chiffres.</p>
+<h2 data-i18n="free.title" class="font-display text-2xl font-bold mb-2">Outils gratuits</h2>
+<p data-i18n="free.desc" class="text-slate-400 mb-6">Deux calculateurs gratuits, sans inscription : tout est calculé dans votre navigateur à partir de vos chiffres.</p>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 <article class="glass-panel rounded-2xl p-5 flex flex-col">
-<h3 class="font-display font-bold text-lg">Calculateur ROI cold email</h3>
-<p class="text-sm text-slate-400 mb-5">Estimez vos rendez-vous, vos clients et votre revenu mensuel à partir de vos taux d'ouverture, de réponse et de closing.</p>
-<a class="mt-auto inline-flex justify-center px-4 py-2.5 rounded-xl bg-white text-slate-950 text-sm font-semibold hover:bg-slate-200 transition" href="/best-of_revstack/outils-gratuits/calculateur-roi-cold-email/">Calculer mon ROI →</a>
+<h3 data-i18n="free.roi.title" class="font-display font-bold text-lg">Calculateur ROI cold email</h3>
+<p data-i18n="free.roi.desc" class="text-sm text-slate-400 mb-5">Estimez vos rendez-vous, vos clients et votre revenu mensuel à partir de vos taux d'ouverture, de réponse et de closing.</p>
+<a class="mt-auto inline-flex justify-center px-4 py-2.5 rounded-xl bg-white text-slate-950 text-sm font-semibold hover:bg-slate-200 transition" data-i18n="free.roi.cta" href="/best-of_revstack/outils-gratuits/calculateur-roi-cold-email/">Calculer mon ROI →</a>
 </article>
 <article class="glass-panel rounded-2xl p-5 flex flex-col">
-<h3 class="font-display font-bold text-lg">Coût d'un rendez-vous manqué</h3>
-<p class="text-sm text-slate-400 mb-5">Combien vos no-shows vous coûtent chaque mois et chaque année, en argent et en heures perdues.</p>
-<a class="mt-auto inline-flex justify-center px-4 py-2.5 rounded-xl bg-white text-slate-950 text-sm font-semibold hover:bg-slate-200 transition" href="/best-of_revstack/outils-gratuits/cout-rendez-vous-manque/">Calculer mes pertes →</a>
+<h3 data-i18n="free.noshow.title" class="font-display font-bold text-lg">Coût d'un rendez-vous manqué</h3>
+<p data-i18n="free.noshow.desc" class="text-sm text-slate-400 mb-5">Combien vos no-shows vous coûtent chaque mois et chaque année, en argent et en heures perdues.</p>
+<a class="mt-auto inline-flex justify-center px-4 py-2.5 rounded-xl bg-white text-slate-950 text-sm font-semibold hover:bg-slate-200 transition" data-i18n="free.noshow.cta" href="/best-of_revstack/outils-gratuits/cout-rendez-vous-manque/">Calculer mes pertes →</a>
 </article>
 </div>
 </section>
 <section id="faq" class="max-w-3xl mx-auto px-4 pb-16">
-<h2 class="font-display text-2xl font-bold mb-6">Questions fréquentes</h2>
+<h2 data-i18n="faq.title" class="font-display text-2xl font-bold mb-6">Questions fréquentes</h2>
 <details class="glass-panel rounded-xl px-5 py-4 mb-3">
-<summary class="font-medium cursor-pointer">Quel outil de cold email choisir ?</summary>
-<p class="text-slate-400 text-sm mt-3 leading-relaxed">Pour une équipe qui veut envoyer vite, Instantly est le plus simple. Pour une agence avec beaucoup de boîtes mail, Smartlead tient mieux la délivrabilité. Lemlist convient si le message mélange courriel et LinkedIn.</p>
+<summary data-i18n="faq.q1" class="font-medium cursor-pointer">Quel outil de cold email choisir ?</summary>
+<p data-i18n="faq.a1" class="text-slate-400 text-sm mt-3 leading-relaxed">Pour une équipe qui veut envoyer vite, Instantly est le plus simple. Pour une agence avec beaucoup de boîtes mail, Smartlead tient mieux la délivrabilité. Lemlist convient si le message mélange courriel et LinkedIn.</p>
 </details>
 <details class="glass-panel rounded-xl px-5 py-4 mb-3">
-<summary class="font-medium cursor-pointer">Apollo ou Clay pour l'enrichissement ?</summary>
-<p class="text-slate-400 text-sm mt-3 leading-relaxed">Apollo reste fort pour la base de contacts. Clay va plus loin quand il faut croiser plusieurs sources. Lusha suffit pour trouver un mobile depuis le navigateur, sans usine à gaz.</p>
+<summary data-i18n="faq.q2" class="font-medium cursor-pointer">Apollo ou Clay pour l'enrichissement ?</summary>
+<p data-i18n="faq.a2" class="text-slate-400 text-sm mt-3 leading-relaxed">Apollo reste fort pour la base de contacts. Clay va plus loin quand il faut croiser plusieurs sources. Lusha suffit pour trouver un mobile depuis le navigateur, sans usine à gaz.</p>
 </details>
 <details class="glass-panel rounded-xl px-5 py-4 mb-3">
-<summary class="font-medium cursor-pointer">Clay ou ZoomInfo pour une grande équipe ?</summary>
-<p class="text-slate-400 text-sm mt-3 leading-relaxed">ZoomInfo vise les grandes équipes et les contrats entreprise. Clay convient mieux aux équipes qui veulent assembler elles-mêmes les données et ne payer que ce qu'elles utilisent.</p>
+<summary data-i18n="faq.q3" class="font-medium cursor-pointer">Clay ou ZoomInfo pour une grande équipe ?</summary>
+<p data-i18n="faq.a3" class="text-slate-400 text-sm mt-3 leading-relaxed">ZoomInfo vise les grandes équipes et les contrats entreprise. Clay convient mieux aux équipes qui veulent assembler elles-mêmes les données et ne payer que ce qu'elles utilisent.</p>
 </details>
 <details class="glass-panel rounded-xl px-5 py-4 mb-3">
-<summary class="font-medium cursor-pointer">Make ou n8n pour automatiser ?</summary>
-<p class="text-slate-400 text-sm mt-3 leading-relaxed">Make est le plus rapide si personne dans l'équipe ne code. n8n est préférable si vous voulez héberger vous-même et brancher des agents IA plus libres.</p>
+<summary data-i18n="faq.q4" class="font-medium cursor-pointer">Make ou n8n pour automatiser ?</summary>
+<p data-i18n="faq.a4" class="text-slate-400 text-sm mt-3 leading-relaxed">Make est le plus rapide si personne dans l'équipe ne code. n8n est préférable si vous voulez héberger vous-même et brancher des agents IA plus libres.</p>
 </details>
 <details class="glass-panel rounded-xl px-5 py-4 mb-3">
-<summary class="font-medium cursor-pointer">Comment apparaître dans l'annuaire ?</summary>
-<p class="text-slate-400 text-sm mt-3 leading-relaxed">La liste gratuite se demande par courriel. L'emplacement en tête de page est à 399 $ par mois, un seul à la fois.</p>
+<summary data-i18n="faq.q5" class="font-medium cursor-pointer">Comment apparaître dans l'annuaire ?</summary>
+<p data-i18n="faq.a5" class="text-slate-400 text-sm mt-3 leading-relaxed">La liste gratuite se demande par courriel. L'emplacement en tête de page est à 99 $ par mois, un seul à la fois.</p>
 </details>
 <details class="glass-panel rounded-xl px-5 py-4 mb-3">
-<summary class="font-medium cursor-pointer">C'est quoi l'audit gratuit ?</summary>
-<p class="text-slate-400 text-sm mt-3 leading-relaxed">Vous décrivez vos outils et votre plus gros problème, on vous répond par courriel avec ce qui bloque dans votre stack de vente et de prospection. Gratuit, sans engagement.</p>
+<summary data-i18n="faq.q6" class="font-medium cursor-pointer">C'est quoi l'audit gratuit ?</summary>
+<p data-i18n="faq.a6" class="text-slate-400 text-sm mt-3 leading-relaxed">Vous décrivez vos outils et votre plus gros problème, on vous répond par courriel avec ce qui bloque dans votre stack de vente et de prospection. Gratuit, sans engagement.</p>
 </details>
+</section>
+<section id="sponsor" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+<article class="sponsor-panel rounded-2xl p-6 sm:p-8">
+<p data-i18n="sp.eyebrow" class="text-xs font-semibold tracking-wide uppercase text-amber-300 mb-2">Emplacement sponsor — un seul, en tête</p>
+<h2 data-i18n="sp.title" class="font-display text-2xl font-bold mb-2">Votre outil devant le catalogue</h2>
+<p data-i18n="sp.price" class="text-slate-400 mb-5">99 $ par mois. Inclus : la fiche en haut de page et le badge Sponsor.</p>
+<ul class="text-sm text-slate-300 space-y-2 mb-6 list-disc list-inside">
+<li data-i18n="sp.b1">Position au-dessus de toutes les autres fiches</li>
+<li data-i18n="sp.b2">Sans engagement affiché au-delà du mois en cours</li>
+</ul>
+<div class="flex flex-col sm:flex-row gap-3">
+<a data-i18n="sp.reserve" id="reserve-sponsor" class="inline-flex justify-center px-5 py-3 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-semibold transition" href="#">Réserver cet emplacement</a>
+<a data-i18n="sp.submit" id="soumettre-outil" class="inline-flex justify-center px-5 py-3 rounded-xl border border-white/15 hover:bg-white/5 font-medium transition" href="#">Soumettre un outil gratuitement</a>
+</div>
+</article>
 </section>
 </main>
 <footer class="border-t border-slate-800 py-8 px-4 text-center text-sm text-slate-500">
-<p class="mb-3">Best of RevStack — Annuaire indépendant d'outils B2B</p>
-<p class="mt-3"><a href="comparatifs/" class="text-indigo-400 hover:text-indigo-300">Voir tous les comparatifs d'outils IA</a> — 244 comparatifs, 51 fiches et 50 alternatives.</p>
-<p class="max-w-2xl mx-auto leading-relaxed">
+<p data-i18n="ft.tagline" class="mb-3">Best of RevStack — Annuaire indépendant d'outils B2B</p>
+<p class="mt-3"><a data-i18n="ft.compare" href="comparatifs/" class="text-indigo-400 hover:text-indigo-300">Voir tous les comparatifs d'outils IA</a><span data-i18n="ft.compareSuffix"> — 244 comparatifs, 51 fiches et 50 alternatives.</span></p>
+<p data-i18n="ft.disclosure" class="max-w-2xl mx-auto leading-relaxed">
 Divulgation : certains liens vers les outils sont, ou pourront être, des liens d'affiliation.
 Si vous vous abonnez via ces liens, Best of RevStack peut toucher une commission, sans frais supplémentaires pour vous.
 Seul l'emplacement identifié « Sponsor » est payant. Le reste du catalogue n'est pas vendu.
 </p>
-<p class="max-w-2xl mx-auto leading-relaxed mt-3">
+<p data-i18n="ft.rates" class="max-w-2xl mx-auto leading-relaxed mt-3">
 Taux d'affiliation affichés vérifiés le 14 novembre 2026 sur les pages officielles des programmes.
 Prix des outils vérifiés le 14 novembre 2026 sur les pages tarifaires des éditeurs (tarifs en $ US, susceptibles de changer).
 Aucun lien affilié actif pour l'instant.
@@ -339,7 +348,7 @@ Aucun lien affilié actif pour l'instant.
 <!-- Modale « Détails » (D13) — portée de Gemini (detail-modal / detail-content) -->
 <div id="detail-modal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 z-50">
   <div class="bg-slate-900 border border-slate-700 rounded-3xl p-6 sm:p-8 max-w-xl w-full shadow-2xl relative">
-    <button type="button" onclick="closeDetailModal()" class="absolute top-5 right-5 text-slate-400 hover:text-white text-lg" aria-label="Fermer">✕</button>
+    <button type="button" onclick="closeDetailModal()" class="absolute top-5 right-5 text-slate-400 hover:text-white text-lg" data-i18n-aria="modal.close" aria-label="Fermer">✕</button>
     <div id="detail-content"></div>
   </div>
 </div>
@@ -369,11 +378,239 @@ const tools = [
     { name: "Synthflow", category: "Agents Vocaux & Chat", price: "Enterprise — sur devis", tagline: "SDR et réceptionnistes vocaux sans code.", affiliation: "", url: "https://synthflow.ai/", affiliateUrl: "", pick: "" }
 ];
 const picks = [
-    { label: "Cold email", why: "Le plus simple pour commencer à envoyer.", name: "Instantly.ai" },
-    { label: "Enrichissement", why: "Quand Apollo ne suffit plus à croiser les sources.", name: "Clay" },
-    { label: "Automatisation", why: "Le plus rapide à relier au reste de vos outils.", name: "Make" }
+    { label: "Cold email", why: "Le plus simple pour commencer à envoyer.", labelEn: "Cold email", whyEn: "The easiest way to start sending.", name: "Instantly.ai" },
+    { label: "Enrichissement", why: "Quand Apollo ne suffit plus à croiser les sources.", labelEn: "Enrichment", whyEn: "When Apollo is no longer enough to cross-check sources.", name: "Clay" },
+    { label: "Automatisation", why: "Le plus rapide à relier au reste de vos outils.", labelEn: "Automation", whyEn: "The fastest to connect with your other tools.", name: "Make" }
 ];
 const categories = ["Tous"].concat(tools.reduce(function(acc, tool) { if (acc.indexOf(tool.category) === -1) acc.push(tool.category); return acc; }, []));
+// Bilingue FR/EN (2026-11-15) : français par défaut, bascule par le bouton FR/EN
+// en haut à droite. Seules les sections principales de la page sont traduites ;
+// les fiches outils (noms, taglines, prix) et les 350+ pages pSEO restent en français.
+var currentLang = "fr";
+try { currentLang = localStorage.getItem("revstack-lang") || "fr"; } catch (e) {}
+if (currentLang !== "en") currentLang = "fr";
+const CATEGORIES_EN = {
+  "Prospection & Cold Email": "Prospecting & Cold Email",
+  "Enrichissement de Données": "Data Enrichment",
+  "CRM & Pipeline IA": "AI CRM & Pipeline",
+  "Automatisation & Workflows": "Automation & Workflows",
+  "Agents Vocaux & Chat": "Voice Agents & Chat"
+};
+const I18N = {
+  fr: {
+    "meta.title": "Best of RevStack — Meilleurs outils IA vente, cold email et prospection B2B",
+    "brand.tagline": "Outils IA Vente & Prospection B2B",
+    "nav.comparatifs": "Comparatifs",
+    "nav.audit": "Audit gratuit",
+    "nav.sponsor": "Devenir sponsor",
+    "hero.title": "Les meilleurs outils d'IA pour la <span class=\"text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-emerald-400\">vente et la prospection B2B</span>",
+    "hero.subtitle": "Comparatif pour choisir un outil de cold email, d'enrichissement de contacts ou d'automatisation. Une recommandation claire par besoin, puis le catalogue complet.",
+    "search.ph": "Rechercher un outil ou une alternative (Apollo, Clay, Instantly...)",
+    "picks.title": "Quoi choisir selon le besoin",
+    "picks.subtitle": "Ce sont les recherches qui amènent des gens prêts à s'inscrire. Chaque ligne mène à un outil.",
+    "picks.view": "Voir",
+    "sim.eyebrow": "Simulateur ROI",
+    "sim.title": "Simulateur de pipeline et de ROI",
+    "sim.desc": "Estimez combien de rendez-vous qualifiés et de revenus un stack de prospection peut vous apporter, selon vos chiffres.",
+    "sim.warn": "Tous les chiffres ci-dessous sont des exemples — modifiez les chiffres avec vos propres données. Aucun taux n'est un fait vérifié.",
+    "sim.l.prospects": "Prospects contactés / mois (exemple : 1 500)",
+    "sim.l.taux-min": "Taux prospect → RDV, min. % (exemple : 3 %)",
+    "sim.l.taux-max": "Taux prospect → RDV, max. % (exemple : 4,5 %)",
+    "sim.l.taux-closing": "Taux RDV → client % (exemple : 20 %)",
+    "sim.l.valeur-client": "Valeur moyenne d'un client, $ (exemple : 1 000 $)",
+    "sim.l.cout-outils": "Coût mensuel des outils, $ (exemple : 100 $)",
+    "sim.r.rdv": "RDV qualifiés / mois",
+    "sim.r.clients": "Nouveaux clients / mois",
+    "sim.r.revenus": "Revenus estimés / mois",
+    "sim.r.roi": "ROI estimé",
+    "sim.note": "Estimation indicative seulement : les taux par défaut (3 % à 4,5 % prospect → RDV, 20 % RDV → client) sont des exemples à remplacer par vos chiffres réels. Vos résultats dépendront de votre liste, de vos messages et de votre offre.",
+    "audit.eyebrow": "Audit gratuit",
+    "audit.title": "Recevoir mon audit gratuit",
+    "audit.desc": "On regarde vos outils de vente et de prospection, vos séquences et vos automatisations, et on vous dit ce qui vous fait perdre des rendez-vous. Réponse par courriel.",
+    "audit.ph.name": "Votre nom",
+    "audit.ph.email": "Courriel professionnel",
+    "audit.ph.company": "Entreprise",
+    "audit.ph.tools": "Outils utilisés actuellement",
+    "audit.ph.problem": "Votre plus gros problème (ex. : peu de réponses aux courriels, pipeline qui fuit...)",
+    "audit.submit": "Envoyer ma demande d'audit",
+    "audit.confirm": "Votre demande s'ouvre dans votre courriel — envoyez-la pour recevoir votre audit.",
+    "cat.title": "Catalogue des outils",
+    "cat.all": "Tous",
+    "cat.none": "Aucun outil ne correspond.",
+    "cat.pick": "Choix",
+    "cat.details": "Détails",
+    "cat.view": "Voir l'outil",
+    "free.title": "Outils gratuits",
+    "free.desc": "Deux calculateurs gratuits, sans inscription : tout est calculé dans votre navigateur à partir de vos chiffres.",
+    "free.roi.title": "Calculateur ROI cold email",
+    "free.roi.desc": "Estimez vos rendez-vous, vos clients et votre revenu mensuel à partir de vos taux d'ouverture, de réponse et de closing.",
+    "free.roi.cta": "Calculer mon ROI →",
+    "free.noshow.title": "Coût d'un rendez-vous manqué",
+    "free.noshow.desc": "Combien vos no-shows vous coûtent chaque mois et chaque année, en argent et en heures perdues.",
+    "free.noshow.cta": "Calculer mes pertes →",
+    "faq.title": "Questions fréquentes",
+    "faq.q1": "Quel outil de cold email choisir ?",
+    "faq.a1": "Pour une équipe qui veut envoyer vite, Instantly est le plus simple. Pour une agence avec beaucoup de boîtes mail, Smartlead tient mieux la délivrabilité. Lemlist convient si le message mélange courriel et LinkedIn.",
+    "faq.q2": "Apollo ou Clay pour l'enrichissement ?",
+    "faq.a2": "Apollo reste fort pour la base de contacts. Clay va plus loin quand il faut croiser plusieurs sources. Lusha suffit pour trouver un mobile depuis le navigateur, sans usine à gaz.",
+    "faq.q3": "Clay ou ZoomInfo pour une grande équipe ?",
+    "faq.a3": "ZoomInfo vise les grandes équipes et les contrats entreprise. Clay convient mieux aux équipes qui veulent assembler elles-mêmes les données et ne payer que ce qu'elles utilisent.",
+    "faq.q4": "Make ou n8n pour automatiser ?",
+    "faq.a4": "Make est le plus rapide si personne dans l'équipe ne code. n8n est préférable si vous voulez héberger vous-même et brancher des agents IA plus libres.",
+    "faq.q5": "Comment apparaître dans l'annuaire ?",
+    "faq.a5": "La liste gratuite se demande par courriel. L'emplacement en tête de page est à 99 $ par mois, un seul à la fois.",
+    "faq.q6": "C'est quoi l'audit gratuit ?",
+    "faq.a6": "Vous décrivez vos outils et votre plus gros problème, on vous répond par courriel avec ce qui bloque dans votre stack de vente et de prospection. Gratuit, sans engagement.",
+    "sp.eyebrow": "Emplacement sponsor — un seul, en tête",
+    "sp.title": "Votre outil devant le catalogue",
+    "sp.price": "99 $ par mois. Inclus : la fiche en haut de page et le badge Sponsor.",
+    "sp.b1": "Position au-dessus de toutes les autres fiches",
+    "sp.b2": "Sans engagement affiché au-delà du mois en cours",
+    "sp.reserve": "Réserver cet emplacement",
+    "sp.submit": "Soumettre un outil gratuitement",
+    "ft.tagline": "Best of RevStack — Annuaire indépendant d'outils B2B",
+    "ft.compare": "Voir tous les comparatifs d'outils IA",
+    "ft.compareSuffix": " — 244 comparatifs, 51 fiches et 50 alternatives.",
+    "ft.disclosure": "Divulgation : certains liens vers les outils sont, ou pourront être, des liens d'affiliation. Si vous vous abonnez via ces liens, Best of RevStack peut toucher une commission, sans frais supplémentaires pour vous. Seul l'emplacement identifié « Sponsor » est payant. Le reste du catalogue n'est pas vendu.",
+    "ft.rates": "Taux d'affiliation affichés vérifiés le 14 novembre 2026 sur les pages officielles des programmes. Prix des outils vérifiés le 14 novembre 2026 sur les pages tarifaires des éditeurs (tarifs en $ US, susceptibles de changer). Aucun lien affilié actif pour l'instant.",
+    "modal.affiliation": "Affiliation",
+    "modal.visit": "Visiter l'outil ↗",
+    "modal.close": "Fermer"
+  },
+  en: {
+    "meta.title": "Best of RevStack — Best AI tools for sales, cold email and B2B prospecting",
+    "brand.tagline": "AI Tools for Sales & B2B Prospecting",
+    "nav.comparatifs": "Comparisons",
+    "nav.audit": "Free audit",
+    "nav.sponsor": "Become a sponsor",
+    "hero.title": "The best AI tools for <span class=\"text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-emerald-400\">B2B sales and prospecting</span>",
+    "hero.subtitle": "Compare tools for cold email, contact enrichment or automation. One clear recommendation per need, then the full catalogue.",
+    "search.ph": "Search for a tool or an alternative (Apollo, Clay, Instantly...)",
+    "picks.title": "What to choose, by need",
+    "picks.subtitle": "These are the searches that bring people ready to sign up. Each row leads to a tool.",
+    "picks.view": "View",
+    "sim.eyebrow": "ROI simulator",
+    "sim.title": "Pipeline and ROI simulator",
+    "sim.desc": "Estimate how many qualified meetings and how much revenue a prospecting stack can bring you, based on your numbers.",
+    "sim.warn": "All figures below are examples — replace them with your own numbers. No rate is a verified fact.",
+    "sim.l.prospects": "Prospects contacted / month (example: 1,500)",
+    "sim.l.taux-min": "Prospect → meeting rate, min. % (example: 3%)",
+    "sim.l.taux-max": "Prospect → meeting rate, max. % (example: 4.5%)",
+    "sim.l.taux-closing": "Meeting → customer rate % (example: 20%)",
+    "sim.l.valeur-client": "Average customer value, $ (example: $1,000)",
+    "sim.l.cout-outils": "Monthly tool cost, $ (example: $100)",
+    "sim.r.rdv": "Qualified meetings / month",
+    "sim.r.clients": "New customers / month",
+    "sim.r.revenus": "Estimated revenue / month",
+    "sim.r.roi": "Estimated ROI",
+    "sim.note": "Indicative estimate only: the default rates (3% to 4.5% prospect → meeting, 20% meeting → customer) are examples to replace with your real numbers. Your results will depend on your list, your messages and your offer.",
+    "audit.eyebrow": "Free audit",
+    "audit.title": "Get my free audit",
+    "audit.desc": "We review your sales and prospecting tools, your sequences and your automations, and tell you what is costing you meetings. Answered by email.",
+    "audit.ph.name": "Your name",
+    "audit.ph.email": "Work email",
+    "audit.ph.company": "Company",
+    "audit.ph.tools": "Tools you currently use",
+    "audit.ph.problem": "Your biggest problem (e.g. few replies to emails, leaky pipeline...)",
+    "audit.submit": "Send my audit request",
+    "audit.confirm": "Your request opens in your email — send it to receive your audit.",
+    "cat.title": "Tool catalogue",
+    "cat.all": "All",
+    "cat.none": "No tool matches.",
+    "cat.pick": "Pick",
+    "cat.details": "Details",
+    "cat.view": "View tool",
+    "free.title": "Free tools",
+    "free.desc": "Two free calculators, no sign-up: everything is computed in your browser from your numbers.",
+    "free.roi.title": "Cold email ROI calculator",
+    "free.roi.desc": "Estimate your meetings, customers and monthly revenue from your open, reply and closing rates.",
+    "free.roi.cta": "Calculate my ROI →",
+    "free.noshow.title": "Cost of a missed meeting",
+    "free.noshow.desc": "How much your no-shows cost you every month and every year, in money and lost hours.",
+    "free.noshow.cta": "Calculate my losses →",
+    "faq.title": "Frequently asked questions",
+    "faq.q1": "Which cold email tool should I choose?",
+    "faq.a1": "For a team that wants to send fast, Instantly is the simplest. For an agency with many mailboxes, Smartlead holds deliverability better. Lemlist fits if the message mixes email and LinkedIn.",
+    "faq.q2": "Apollo or Clay for enrichment?",
+    "faq.a2": "Apollo remains strong for the contact database. Clay goes further when you need to cross-check several sources. Lusha is enough to find a mobile number from the browser, with no fuss.",
+    "faq.q3": "Clay or ZoomInfo for a large team?",
+    "faq.a3": "ZoomInfo targets large teams and enterprise contracts. Clay suits teams that want to assemble the data themselves and only pay for what they use.",
+    "faq.q4": "Make or n8n to automate?",
+    "faq.a4": "Make is the fastest if nobody on the team codes. n8n is better if you want to self-host and plug in freer AI agents.",
+    "faq.q5": "How do I get listed in the directory?",
+    "faq.a5": "The free listing is requested by email. The top-of-page placement is $99 per month, one at a time.",
+    "faq.q6": "What is the free audit?",
+    "faq.a6": "You describe your tools and your biggest problem, and we reply by email with what is blocking your sales and prospecting stack. Free, no commitment.",
+    "sp.eyebrow": "Sponsored placement — one only, at the top",
+    "sp.title": "Your tool in front of the catalogue",
+    "sp.price": "$99 per month. Includes: the listing at the top of the page and the Sponsor badge.",
+    "sp.b1": "Position above all other listings",
+    "sp.b2": "No commitment shown beyond the current month",
+    "sp.reserve": "Reserve this placement",
+    "sp.submit": "Submit a tool for free",
+    "ft.tagline": "Best of RevStack — Independent B2B tools directory",
+    "ft.compare": "See all AI tool comparisons",
+    "ft.compareSuffix": " — 244 comparisons, 51 tool profiles and 50 alternatives.",
+    "ft.disclosure": "Disclosure: some links to tools are, or may become, affiliate links. If you subscribe through these links, Best of RevStack may earn a commission, at no extra cost to you. Only the placement labelled “Sponsor” is paid. The rest of the catalogue is not for sale.",
+    "ft.rates": "Affiliation rates shown were verified on 14 November 2026 on the programs’ official pages. Tool prices were verified on 14 November 2026 on the vendors’ pricing pages (prices in US $, subject to change). No active affiliate link for now.",
+    "modal.affiliation": "Affiliation",
+    "modal.visit": "Visit the tool ↗",
+    "modal.close": "Close"
+  }
+};
+function t(key) {
+  if (I18N[currentLang] && I18N[currentLang][key] !== undefined) return I18N[currentLang][key];
+  if (I18N.fr[key] !== undefined) return I18N.fr[key];
+  return key;
+}
+function catLabel(category) {
+  if (category === "Tous") return t("cat.all");
+  if (currentLang === "en") return CATEGORIES_EN[category] || category;
+  return category;
+}
+function pickLabelEn(pick) {
+  var item = picks.find(function (p) { return p.label === pick; });
+  return item ? item.labelEn : pick;
+}
+function setMailLinks() {
+  var en = currentLang === "en";
+  document.getElementById("reserve-sponsor").href = mailLink(
+    en ? "Reserve the Best of RevStack sponsored placement" : "Réserver l'emplacement sponsor Best of RevStack",
+    en ? "Hello,\n\nI would like to reserve the sponsored placement ($99/month).\n\nTool name:\nWebsite:\n\nThank you"
+       : "Bonjour,\n\nJe souhaite réserver l'emplacement sponsor (99 $/mois).\n\nNom de l'outil :\nSite web :\n\nMerci"
+  );
+  document.getElementById("soumettre-outil").href = mailLink(
+    en ? "Submit a tool to Best of RevStack" : "Soumettre un outil sur Best of RevStack",
+    en ? "Hello,\n\nI would like to have my tool listed for free.\n\nTool name:\nWebsite:\nCategory:\n\nThank you"
+       : "Bonjour,\n\nJe souhaite faire lister mon outil gratuitement.\n\nNom de l'outil :\nSite web :\nCatégorie :\n\nMerci"
+  );
+}
+function applyLang(lang) {
+  currentLang = (lang === "en") ? "en" : "fr";
+  try { localStorage.setItem("revstack-lang", currentLang); } catch (e) {}
+  document.documentElement.lang = currentLang === "en" ? "en" : "fr-CA";
+  document.title = t("meta.title");
+  document.querySelectorAll("[data-i18n]").forEach(function (el) {
+    el.innerHTML = t(el.getAttribute("data-i18n"));
+  });
+  document.querySelectorAll("[data-i18n-ph]").forEach(function (el) {
+    el.setAttribute("placeholder", t(el.getAttribute("data-i18n-ph")));
+  });
+  document.querySelectorAll("[data-i18n-aria]").forEach(function (el) {
+    el.setAttribute("aria-label", t(el.getAttribute("data-i18n-aria")));
+  });
+  var frBtn = document.getElementById("lang-fr");
+  var enBtn = document.getElementById("lang-en");
+  if (frBtn && enBtn) {
+    frBtn.className = currentLang === "fr" ? "px-4 py-2.5 bg-white text-slate-950" : "px-4 py-2.5 bg-slate-800 text-slate-200 hover:text-white";
+    enBtn.className = currentLang === "en" ? "px-4 py-2.5 bg-white text-slate-950" : "px-4 py-2.5 bg-slate-800 text-slate-200 hover:text-white";
+  }
+  setMailLinks();
+  renderPicks();
+  renderFilters();
+  renderTools();
+}
+function setLang(lang) { applyLang(lang); }
 function mailLink(subject, body) {
   return "mailto:" + CONTACT + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
 }
@@ -399,12 +636,14 @@ function renderPicks() {
   const pickTools = picks.map(function(item) { return tools.find(function(tool) { return tool.name === item.name; }) || null; }).filter(Boolean);
   document.getElementById('picks').innerHTML = pickTools.map(function(tool) {
     const item = picks.find(function(p) { return p.name === tool.name; });
+    const label = currentLang === "en" ? item.labelEn : item.label;
+    const why = currentLang === "en" ? item.whyEn : item.why;
     return '' +
       '<article class="glass-panel rounded-2xl p-5 flex flex-col">' +
-      '<p class="text-xs font-semibold uppercase tracking-wide text-emerald-300 mb-2">' + esc(item.label) + '</p>' +
+      '<p class="text-xs font-semibold uppercase tracking-wide text-emerald-300 mb-2">' + esc(label) + '</p>' +
       '<h3 class="font-display font-bold text-lg">' + esc(tool.name) + '</h3>' +
-      '<p class="text-sm text-slate-400 mb-5">' + esc(item.why) + '</p>' +
-      '<a class="mt-auto inline-flex justify-center px-4 py-2.5 rounded-xl bg-indigo-500 hover:bg-indigo-400 text-sm font-semibold transition" target="_blank" rel="' + relFor(tool) + '" href="' + esc(hrefFor(tool)) + '">Voir ' + esc(tool.name) + '</a>' +
+      '<p class="text-sm text-slate-400 mb-5">' + esc(why) + '</p>' +
+      '<a class="mt-auto inline-flex justify-center px-4 py-2.5 rounded-xl bg-indigo-500 hover:bg-indigo-400 text-sm font-semibold transition" target="_blank" rel="' + relFor(tool) + '" href="' + esc(hrefFor(tool)) + '">' + esc(t("picks.view")) + ' ' + esc(tool.name) + '</a>' +
       '</article>';
   }).join("");
 }
@@ -414,7 +653,7 @@ function renderFilters() {
     const cls = category === activeCategory
       ? "px-3 py-1.5 rounded-full text-xs font-semibold bg-white text-slate-950"
       : "px-3 py-1.5 rounded-full text-xs font-medium border border-white/15 text-slate-300 hover:bg-white/5";
-    return '<button type="button" class="' + cls + '" data-category="' + esc(category) + '">' + esc(category) + '</button>';
+    return '<button type="button" class="' + cls + '" data-category="' + esc(category) + '">' + esc(catLabel(category)) + '</button>';
   }).join("");
   root.querySelectorAll("button").forEach(function(button) {
     button.addEventListener("click", function() {
@@ -428,7 +667,8 @@ function visibleTools() {
   const q = document.getElementById('search').value.toLowerCase();
   return tools.filter(function(tool) {
     const inCategory = activeCategory === "Tous" || tool.category === activeCategory;
-    const inQuery = !q || tool.name.toLowerCase().includes(q) || tool.tagline.toLowerCase().includes(q) || tool.category.toLowerCase().includes(q);
+    const catEn = (CATEGORIES_EN[tool.category] || tool.category).toLowerCase();
+    const inQuery = !q || tool.name.toLowerCase().includes(q) || tool.tagline.toLowerCase().includes(q) || tool.category.toLowerCase().includes(q) || catEn.includes(q);
     return inCategory && inQuery;
   });
 }
@@ -439,12 +679,12 @@ function renderTools() {
   const grid = document.getElementById('tools-grid');
   const list = visibleTools();
   if (!list.length) {
-    grid.innerHTML = '<p class="text-slate-400">Aucun outil ne correspond.</p>';
+    grid.innerHTML = '<p class="text-slate-400">' + esc(t("cat.none")) + '</p>';
     return;
   }
   grid.innerHTML = list.map(function(tool) {
     const badge = tool.pick
-      ? '<span class="text-xs px-2 py-1 rounded-full bg-emerald-400/15 text-emerald-300">Choix ' + esc(tool.pick) + '</span>'
+      ? '<span class="text-xs px-2 py-1 rounded-full bg-emerald-400/15 text-emerald-300">' + esc(t("cat.pick")) + ' ' + esc(currentLang === "en" ? pickLabelEn(tool.pick) : tool.pick) + '</span>'
       : "";
     const affiliationLine = tool.affiliation
       ? '<p class="text-xs text-amber-300 mb-4">' + esc(tool.affiliation) + '</p>'
@@ -462,8 +702,8 @@ function renderTools() {
       '</div>' +
       affiliationLine +
       '<div class="mt-auto flex gap-2">' +
-      '<button type="button" onclick="openDetailModal(' + tools.indexOf(tool) + ')" class="flex-1 inline-flex justify-center px-4 py-2.5 rounded-xl bg-slate-800 text-white text-sm font-semibold border border-slate-700 hover:bg-slate-700 transition">Détails</button>' +
-      '<a class="flex-1 inline-flex justify-center px-4 py-2.5 rounded-xl bg-white text-slate-950 text-sm font-semibold hover:bg-slate-200 transition" target="_blank" rel="' + relFor(tool) + '" href="' + esc(hrefFor(tool)) + '">Voir l\'outil</a>' +
+      '<button type="button" onclick="openDetailModal(' + tools.indexOf(tool) + ')" class="flex-1 inline-flex justify-center px-4 py-2.5 rounded-xl bg-slate-800 text-white text-sm font-semibold border border-slate-700 hover:bg-slate-700 transition">' + esc(t("cat.details")) + '</button>' +
+      '<a class="flex-1 inline-flex justify-center px-4 py-2.5 rounded-xl bg-white text-slate-950 text-sm font-semibold hover:bg-slate-200 transition" target="_blank" rel="' + relFor(tool) + '" href="' + esc(hrefFor(tool)) + '">' + esc(t("cat.view")) + '</a>' +
       '</div>' +
       '</article>';
   }).join("");
@@ -480,7 +720,7 @@ function openDetailModal(index) {
   if (!tool) return;
   var affilBlock = tool.affiliation
     ? '<div class="bg-slate-800/60 p-4 rounded-2xl border border-slate-700/80 mb-6">' +
-      '<h4 class="text-xs font-bold uppercase tracking-wider text-indigo-300 mb-1">Affiliation</h4>' +
+      '<h4 class="text-xs font-bold uppercase tracking-wider text-indigo-300 mb-1">' + esc(t("modal.affiliation")) + '</h4>' +
       '<p class="text-xs text-slate-300 leading-relaxed">' + esc(tool.affiliation) + '</p>' +
       '</div>'
     : '';
@@ -493,7 +733,7 @@ function openDetailModal(index) {
     '<p class="text-slate-300 text-sm leading-relaxed mb-4">' + esc(tool.tagline) + '</p>' +
     affilBlock +
     '<div class="flex gap-3">' +
-    '<a href="' + esc(hrefFor(tool)) + '" target="_blank" rel="' + relFor(tool) + '" class="inline-block px-4 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold">Visiter l\'outil ↗</a>' +
+    '<a href="' + esc(hrefFor(tool)) + '" target="_blank" rel="' + relFor(tool) + '" class="inline-block px-4 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold">' + esc(t("modal.visit")) + '</a>' +
     '</div>';
   document.getElementById('detail-modal').classList.remove('hidden');
 }
@@ -506,22 +746,22 @@ document.getElementById('detail-modal').addEventListener('click', function (e) {
 document.addEventListener('keydown', function (e) {
   if (e.key === 'Escape') closeDetailModal();
 });
-document.getElementById("reserve-sponsor").href = mailLink(
-  "Réserver l'emplacement sponsor Best of RevStack",
-  "Bonjour,\n\nJe souhaite réserver l'emplacement sponsor (399 $/mois).\n\nNom de l'outil :\nSite web :\n\nMerci"
-);
-document.getElementById("soumettre-outil").href = mailLink(
-  "Soumettre un outil sur Best of RevStack",
-  "Bonjour,\n\nJe souhaite faire lister mon outil gratuitement.\n\nNom de l'outil :\nSite web :\nCatégorie :\n\nMerci"
-);
+// Liens courriel du sponsor — bilingues, posés par setMailLinks() dans applyLang().
 document.getElementById("audit-form").addEventListener("submit", function(e) {
   e.preventDefault();
-  const body = "Bonjour,\n\nJe demande mon audit gratuit RevOps.\n\nNom : " + document.getElementById("audit-nom").value +
+  var en = currentLang === "en";
+  var body = en
+    ? "Hello,\n\nI am requesting my free RevOps audit.\n\nName: " + document.getElementById("audit-nom").value +
+      "\nEmail: " + document.getElementById("audit-courriel").value +
+      "\nCompany: " + document.getElementById("audit-entreprise").value +
+      "\nTools used: " + document.getElementById("audit-outils").value +
+      "\nBiggest problem: " + document.getElementById("audit-probleme").value + "\n\nThank you"
+    : "Bonjour,\n\nJe demande mon audit gratuit RevOps.\n\nNom : " + document.getElementById("audit-nom").value +
     "\nCourriel : " + document.getElementById("audit-courriel").value +
     "\nEntreprise : " + document.getElementById("audit-entreprise").value +
     "\nOutils utilisés : " + document.getElementById("audit-outils").value +
     "\nPlus gros problème : " + document.getElementById("audit-probleme").value + "\n\nMerci";
-  window.location.href = mailLink("Demande d'audit gratuit RevOps", body);
+  window.location.href = mailLink(en ? "Free RevOps audit request" : "Demande d'audit gratuit RevOps", body);
   document.getElementById("audit-confirm").classList.remove("hidden");
 });
 // Simulateur ROI — porté du code Gemini (« Mini Simulateur ROI B2B Intégré », lignes ~970-1126 du dump)
@@ -570,9 +810,7 @@ document.getElementById("sim-prospects").addEventListener("input", function() {
   document.getElementById(id).addEventListener("input", updateSim);
 });
 updateSim();
-renderPicks();
-renderFilters();
-renderTools();
+applyLang(currentLang);
 </script>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "326925c210134e88821e25a12f0bf9d5"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
