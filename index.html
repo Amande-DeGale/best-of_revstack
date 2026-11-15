@@ -170,6 +170,7 @@
 </div>
 </div>
 <a href="comparatifs/" class="px-4 py-2 rounded-xl text-sm font-medium text-slate-200 hover:text-white transition text-center">Comparatifs</a>
+<a href="#audit" class="px-4 py-2 rounded-xl text-sm font-medium text-slate-200 hover:text-white transition text-center">Audit gratuit</a>
 <a href="#sponsor" class="px-4 py-2 rounded-xl text-sm font-medium bg-indigo-600 hover:bg-indigo-500 text-white transition text-center">Devenir sponsor</a>
 </div>
 </div>
@@ -193,6 +194,22 @@
 <a id="reserve-sponsor" class="inline-flex justify-center px-5 py-3 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-semibold transition" href="#">Réserver cet emplacement</a>
 <a id="soumettre-outil" class="inline-flex justify-center px-5 py-3 rounded-xl border border-white/15 hover:bg-white/5 font-medium transition" href="#">Soumettre un outil gratuitement</a>
 </div>
+</article>
+</section>
+<section id="audit" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+<article class="glass-panel rounded-2xl p-6 sm:p-8">
+<p class="text-xs font-semibold tracking-wide uppercase text-emerald-300 mb-2">Audit gratuit</p>
+<h2 class="font-display text-2xl font-bold mb-2">Recevoir mon audit gratuit</h2>
+<p class="text-slate-400 mb-6">On regarde vos outils de vente et de prospection, vos séquences et vos automatisations, et on vous dit ce qui vous fait perdre des rendez-vous. Réponse par courriel.</p>
+<form id="audit-form" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<input type="text" id="audit-nom" required placeholder="Votre nom" class="px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+<input type="email" id="audit-courriel" required placeholder="Courriel professionnel" class="px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+<input type="text" id="audit-entreprise" placeholder="Entreprise" class="px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+<input type="text" id="audit-outils" placeholder="Outils utilisés actuellement" class="px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+<textarea id="audit-probleme" rows="3" placeholder="Votre plus gros problème (ex. : peu de réponses aux courriels, pipeline qui fuit...)" class="sm:col-span-2 px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
+<button type="submit" class="sm:col-span-2 inline-flex justify-center px-5 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-semibold transition">Envoyer ma demande d'audit</button>
+</form>
+<p id="audit-confirm" class="hidden text-sm text-emerald-300 mt-4">Votre demande s'ouvre dans votre courriel — envoyez-la pour recevoir votre audit.</p>
 </article>
 </section>
 <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
@@ -226,6 +243,10 @@
 <details class="glass-panel rounded-xl px-5 py-4 mb-3">
 <summary class="font-medium cursor-pointer">Comment apparaître dans l'annuaire ?</summary>
 <p class="text-slate-400 text-sm mt-3 leading-relaxed">La liste gratuite se demande par courriel. L'emplacement en tête de page est à 399 $ par mois, un seul à la fois.</p>
+</details>
+<details class="glass-panel rounded-xl px-5 py-4 mb-3">
+<summary class="font-medium cursor-pointer">C'est quoi l'audit gratuit ?</summary>
+<p class="text-slate-400 text-sm mt-3 leading-relaxed">Vous décrivez vos outils et votre plus gros problème, on vous répond par courriel avec ce qui bloque dans votre stack de vente et de prospection. Gratuit, sans engagement.</p>
 </details>
 </section>
 </main>
@@ -370,6 +391,16 @@ document.getElementById("soumettre-outil").href = mailLink(
   "Soumettre un outil sur Best of RevStack",
   "Bonjour,\n\nJe souhaite faire lister mon outil gratuitement.\n\nNom de l'outil :\nSite web :\nCatégorie :\n\nMerci"
 );
+document.getElementById("audit-form").addEventListener("submit", function(e) {
+  e.preventDefault();
+  const body = "Bonjour,\n\nJe demande mon audit gratuit RevOps.\n\nNom : " + document.getElementById("audit-nom").value +
+    "\nCourriel : " + document.getElementById("audit-courriel").value +
+    "\nEntreprise : " + document.getElementById("audit-entreprise").value +
+    "\nOutils utilisés : " + document.getElementById("audit-outils").value +
+    "\nPlus gros problème : " + document.getElementById("audit-probleme").value + "\n\nMerci";
+  window.location.href = mailLink("Demande d'audit gratuit RevOps", body);
+  document.getElementById("audit-confirm").classList.remove("hidden");
+});
 renderPicks();
 renderFilters();
 renderTools();
