@@ -3,6 +3,8 @@ name: IndexNow auto-submit
 on:
   push:
     branches: [main]
+    paths:
+      - 'sitemap.xml'
   workflow_dispatch:
 
 jobs:
@@ -10,13 +12,26 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      - name: Submit sitemap URLs to IndexNow
+      - name: Submit new URLs to IndexNow
         run: |
-          KEY=$(cat revstackai2026indexnow.txt)
-          INDEXNOW_KEY="$KEY" python3 scripts/submit_indexnow.py
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            KEY=$(cat revstackai2026indexnow.txt)
+            INDEXNOW_KEY="$KEY" python3 scripts/submit_indexnow.py
+          else
+            git diff HEAD~1 HEAD -- sitemap.xml | grep '^+' | sed -n 's/.*<loc>\(.*\)<\/loc>.*/\1/p' > new_urls.txt
+            if [ -s new_urls.txt ]; then
+              echo "Nouvelles URLs : $(wc -l < new_urls.txt)"
+              KEY=$(cat revstackai2026indexnow.txt)
+              INDEXNOW_KEY="$KEY" python3 scripts/submit_indexnow.py --urls-file new_urls.txt
+            else
+              echo "Aucune nouvelle page, rien a soumettre."
+            fi
+          fi
