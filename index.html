@@ -181,6 +181,62 @@
 <p class="text-slate-400 text-lg max-w-2xl mx-auto mb-8">Comparatif pour choisir un outil de cold email, d'enrichissement de contacts ou d'automatisation. Une recommandation claire par besoin, puis le catalogue complet.</p>
 <input type="search" id="search" oninput="filterTools()" placeholder="Rechercher un outil ou une alternative (Apollo, Clay, Instantly...)" class="w-full max-w-xl mx-auto px-5 py-4 rounded-2xl bg-slate-900 border border-slate-700 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
 </section>
+<section id="simulateur" class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+<article class="glass-panel rounded-3xl border border-indigo-500/30 p-6 sm:p-8">
+<p class="text-xs font-semibold tracking-wide uppercase text-indigo-300 mb-2">Simulateur ROI</p>
+<h2 class="font-display text-2xl font-bold mb-2">Simulateur de pipeline et de ROI</h2>
+<p class="text-slate-400 text-sm mb-1">Estimez combien de rendez-vous qualifiés et de revenus un stack de prospection peut vous apporter, selon vos chiffres.</p>
+<p class="text-xs text-amber-300 mb-6">Tous les chiffres ci-dessous sont des exemples — modifiez les chiffres avec vos propres données. Aucun taux n'est un fait vérifié.</p>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+<div class="sm:col-span-2">
+<label for="sim-prospects" class="block text-xs font-medium text-slate-300 mb-1">Prospects contactés / mois (exemple : 1 500)</label>
+<div class="flex items-center gap-4">
+<input type="range" id="sim-prospects-range" min="500" max="5000" step="500" value="1500" class="flex-1 accent-indigo-500" />
+<input type="number" id="sim-prospects" min="0" max="100000" step="100" value="1500" class="w-28 px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+</div>
+</div>
+<div>
+<label for="sim-taux-min" class="block text-xs font-medium text-slate-300 mb-1">Taux prospect → RDV, min. % (exemple : 3 %)</label>
+<input type="number" id="sim-taux-min" min="0" max="100" step="0.5" value="3" class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+</div>
+<div>
+<label for="sim-taux-max" class="block text-xs font-medium text-slate-300 mb-1">Taux prospect → RDV, max. % (exemple : 4,5 %)</label>
+<input type="number" id="sim-taux-max" min="0" max="100" step="0.5" value="4.5" class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+</div>
+<div>
+<label for="sim-taux-closing" class="block text-xs font-medium text-slate-300 mb-1">Taux RDV → client % (exemple : 20 %)</label>
+<input type="number" id="sim-taux-closing" min="0" max="100" step="1" value="20" class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+</div>
+<div>
+<label for="sim-valeur-client" class="block text-xs font-medium text-slate-300 mb-1">Valeur moyenne d'un client, $ (exemple : 1 000 $)</label>
+<input type="number" id="sim-valeur-client" min="0" max="1000000" step="50" value="1000" class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+</div>
+<div>
+<label for="sim-cout-outils" class="block text-xs font-medium text-slate-300 mb-1">Coût mensuel des outils, $ (exemple : 100 $)</label>
+<input type="number" id="sim-cout-outils" min="0" max="100000" step="10" value="100" class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+</div>
+</div>
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-4 bg-slate-900/80 px-5 py-4 rounded-2xl border border-slate-800">
+<div>
+<span class="text-xs text-slate-400 block">RDV qualifiés / mois</span>
+<span id="sim-rdv" class="text-lg font-bold text-white">45 – 68</span>
+</div>
+<div>
+<span class="text-xs text-slate-400 block">Nouveaux clients / mois</span>
+<span id="sim-clients" class="text-lg font-bold text-emerald-400">9 – 14</span>
+</div>
+<div>
+<span class="text-xs text-slate-400 block">Revenus estimés / mois</span>
+<span id="sim-revenus" class="text-lg font-bold text-emerald-400">9 000 $ – 13 500 $</span>
+</div>
+<div>
+<span class="text-xs text-slate-400 block">ROI estimé</span>
+<span id="sim-roi" class="text-lg font-bold text-emerald-400">8 900 % – 13 400 %</span>
+</div>
+</div>
+<p class="text-xs text-slate-500 mt-4">Estimation indicative seulement : les taux par défaut (3 % à 4,5 % prospect → RDV, 20 % RDV → client) sont des exemples à remplacer par vos chiffres réels. Vos résultats dépendront de votre liste, de vos messages et de votre offre.</p>
+</article>
+</section>
 <section id="sponsor" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
 <article class="sponsor-panel rounded-2xl p-6 sm:p-8">
 <p class="text-xs font-semibold tracking-wide uppercase text-amber-300 mb-2">Emplacement sponsor — un seul, en tête</p>
@@ -221,6 +277,22 @@
 <h2 class="font-display text-2xl font-bold mb-6">Catalogue des outils</h2>
 <div id="filters" class="flex flex-wrap gap-2 mb-6"></div>
 <div id="tools-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+</section>
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+<h2 class="font-display text-2xl font-bold mb-2">Outils gratuits</h2>
+<p class="text-slate-400 mb-6">Deux calculateurs gratuits, sans inscription : tout est calculé dans votre navigateur à partir de vos chiffres.</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<article class="glass-panel rounded-2xl p-5 flex flex-col">
+<h3 class="font-display font-bold text-lg">Calculateur ROI cold email</h3>
+<p class="text-sm text-slate-400 mb-5">Estimez vos rendez-vous, vos clients et votre revenu mensuel à partir de vos taux d'ouverture, de réponse et de closing.</p>
+<a class="mt-auto inline-flex justify-center px-4 py-2.5 rounded-xl bg-white text-slate-950 text-sm font-semibold hover:bg-slate-200 transition" href="/best-of_revstack/outils-gratuits/calculateur-roi-cold-email/">Calculer mon ROI →</a>
+</article>
+<article class="glass-panel rounded-2xl p-5 flex flex-col">
+<h3 class="font-display font-bold text-lg">Coût d'un rendez-vous manqué</h3>
+<p class="text-sm text-slate-400 mb-5">Combien vos no-shows vous coûtent chaque mois et chaque année, en argent et en heures perdues.</p>
+<a class="mt-auto inline-flex justify-center px-4 py-2.5 rounded-xl bg-white text-slate-950 text-sm font-semibold hover:bg-slate-200 transition" href="/best-of_revstack/outils-gratuits/cout-rendez-vous-manque/">Calculer mes pertes →</a>
+</article>
+</div>
 </section>
 <section id="faq" class="max-w-3xl mx-auto px-4 pb-16">
 <h2 class="font-display text-2xl font-bold mb-6">Questions fréquentes</h2>
@@ -264,6 +336,13 @@ Prix des outils vérifiés le 14 novembre 2026 sur les pages tarifaires des édi
 Aucun lien affilié actif pour l'instant.
 </p>
 </footer>
+<!-- Modale « Détails » (D13) — portée de Gemini (detail-modal / detail-content) -->
+<div id="detail-modal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+  <div class="bg-slate-900 border border-slate-700 rounded-3xl p-6 sm:p-8 max-w-xl w-full shadow-2xl relative">
+    <button type="button" onclick="closeDetailModal()" class="absolute top-5 right-5 text-slate-400 hover:text-white text-lg" aria-label="Fermer">✕</button>
+    <div id="detail-content"></div>
+  </div>
+</div>
 <script>
 const CONTACT = "degale369@gmail.com";
 let activeCategory = "Tous";
@@ -353,6 +432,9 @@ function visibleTools() {
     return inCategory && inQuery;
   });
 }
+// Correctif 2026-11-15 : l'input #search appelait filterTools() qui n'existait pas
+// (recherche texte cassée sur l'accueil). visibleTools() lit déjà #search.
+function filterTools() { renderTools(); }
 function renderTools() {
   const grid = document.getElementById('tools-grid');
   const list = visibleTools();
@@ -379,10 +461,51 @@ function renderTools() {
       '<span class="text-emerald-400 font-medium">' + esc(tool.price) + '</span>' +
       '</div>' +
       affiliationLine +
-      '<a class="mt-auto inline-flex justify-center px-4 py-2.5 rounded-xl bg-white text-slate-950 text-sm font-semibold hover:bg-slate-200 transition" target="_blank" rel="' + relFor(tool) + '" href="' + esc(hrefFor(tool)) + '">Voir l\'outil</a>' +
+      '<div class="mt-auto flex gap-2">' +
+      '<button type="button" onclick="openDetailModal(' + tools.indexOf(tool) + ')" class="flex-1 inline-flex justify-center px-4 py-2.5 rounded-xl bg-slate-800 text-white text-sm font-semibold border border-slate-700 hover:bg-slate-700 transition">Détails</button>' +
+      '<a class="flex-1 inline-flex justify-center px-4 py-2.5 rounded-xl bg-white text-slate-950 text-sm font-semibold hover:bg-slate-200 transition" target="_blank" rel="' + relFor(tool) + '" href="' + esc(hrefFor(tool)) + '">Voir l\'outil</a>' +
+      '</div>' +
       '</article>';
   }).join("");
 }
+// Modale « Détails » (D13) — portée de Gemini (detail-modal / detail-content /
+// openDetailModal / closeDetailModal), adaptée à l'accueil :
+// - recherche par index dans le tableau `tools` déjà présent dans la page
+//   (pas d'id numérique dans ce tableau) ;
+// - `tool.rating` et `tool.details` de Gemini SUPPRIMÉS (notes et verdicts inventés) :
+//   la modale n'affiche que prix, catégorie, affiliation et tagline — données vérifiées.
+// - fermeture : bouton ✕ (Gemini) + clic sur le fond + touche Échap (ajouts D13).
+function openDetailModal(index) {
+  var tool = tools[index];
+  if (!tool) return;
+  var affilBlock = tool.affiliation
+    ? '<div class="bg-slate-800/60 p-4 rounded-2xl border border-slate-700/80 mb-6">' +
+      '<h4 class="text-xs font-bold uppercase tracking-wider text-indigo-300 mb-1">Affiliation</h4>' +
+      '<p class="text-xs text-slate-300 leading-relaxed">' + esc(tool.affiliation) + '</p>' +
+      '</div>'
+    : '';
+  document.getElementById('detail-content').innerHTML =
+    '<div class="mb-4">' +
+    '<span class="text-xs px-2.5 py-1 rounded-full bg-indigo-500/20 text-indigo-300 font-medium">' + esc(tool.category) + '</span>' +
+    '<h3 class="text-2xl font-display font-bold text-white mt-3">' + esc(tool.name) + '</h3>' +
+    '<p class="text-emerald-400 font-semibold text-sm mt-1">' + esc(tool.price) + '</p>' +
+    '</div>' +
+    '<p class="text-slate-300 text-sm leading-relaxed mb-4">' + esc(tool.tagline) + '</p>' +
+    affilBlock +
+    '<div class="flex gap-3">' +
+    '<a href="' + esc(hrefFor(tool)) + '" target="_blank" rel="' + relFor(tool) + '" class="inline-block px-4 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold">Visiter l\'outil ↗</a>' +
+    '</div>';
+  document.getElementById('detail-modal').classList.remove('hidden');
+}
+function closeDetailModal() {
+  document.getElementById('detail-modal').classList.add('hidden');
+}
+document.getElementById('detail-modal').addEventListener('click', function (e) {
+  if (e.target === this) closeDetailModal();
+});
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Escape') closeDetailModal();
+});
 document.getElementById("reserve-sponsor").href = mailLink(
   "Réserver l'emplacement sponsor Best of RevStack",
   "Bonjour,\n\nJe souhaite réserver l'emplacement sponsor (399 $/mois).\n\nNom de l'outil :\nSite web :\n\nMerci"
@@ -401,6 +524,52 @@ document.getElementById("audit-form").addEventListener("submit", function(e) {
   window.location.href = mailLink("Demande d'audit gratuit RevOps", body);
   document.getElementById("audit-confirm").classList.remove("hidden");
 });
+// Simulateur ROI — porté du code Gemini (« Mini Simulateur ROI B2B Intégré », lignes ~970-1126 du dump)
+// et du widget « Simulateur de pipeline » des pages pSEO. Les taux 3 %–4,5 % de Gemini sont repris
+// comme valeurs d'exemple modifiables, pas comme des faits vérifiés.
+function simNum(id, fallback) {
+  const v = parseFloat(document.getElementById(id).value);
+  return isNaN(v) ? fallback : v;
+}
+function fmtInt(v) {
+  return Math.round(v).toLocaleString("fr-CA");
+}
+function fmtMoney(v) {
+  return fmtInt(v) + " $";
+}
+function updateSim() {
+  const prospects = simNum("sim-prospects", 1500);
+  const tauxMin = simNum("sim-taux-min", 3);
+  const tauxMax = simNum("sim-taux-max", 4.5);
+  const closing = simNum("sim-taux-closing", 20);
+  const valeur = simNum("sim-valeur-client", 1000);
+  const cout = simNum("sim-cout-outils", 100);
+  const rdvMin = prospects * tauxMin / 100;
+  const rdvMax = prospects * tauxMax / 100;
+  const clientsMin = rdvMin * closing / 100;
+  const clientsMax = rdvMax * closing / 100;
+  const revMin = clientsMin * valeur;
+  const revMax = clientsMax * valeur;
+  document.getElementById("sim-rdv").textContent = fmtInt(rdvMin) + " – " + fmtInt(rdvMax);
+  document.getElementById("sim-clients").textContent = fmtInt(clientsMin) + " – " + fmtInt(clientsMax);
+  document.getElementById("sim-revenus").textContent = fmtMoney(revMin) + " – " + fmtMoney(revMax);
+  document.getElementById("sim-roi").textContent = cout > 0
+    ? fmtInt((revMin - cout) / cout * 100) + " % – " + fmtInt((revMax - cout) / cout * 100) + " %"
+    : "—";
+}
+document.getElementById("sim-prospects-range").addEventListener("input", function() {
+  document.getElementById("sim-prospects").value = this.value;
+  updateSim();
+});
+document.getElementById("sim-prospects").addEventListener("input", function() {
+  const v = parseFloat(this.value);
+  if (!isNaN(v)) document.getElementById("sim-prospects-range").value = Math.min(5000, Math.max(500, v));
+  updateSim();
+});
+["sim-taux-min", "sim-taux-max", "sim-taux-closing", "sim-valeur-client", "sim-cout-outils"].forEach(function(id) {
+  document.getElementById(id).addEventListener("input", updateSim);
+});
+updateSim();
 renderPicks();
 renderFilters();
 renderTools();

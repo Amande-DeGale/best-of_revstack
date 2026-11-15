@@ -32,7 +32,7 @@
 <p class="text-xs text-slate-500 mt-1">Prix indicatif tiré de notre catalogue — vérifiez le tarif exact sur le site officiel de l&#x27;éditeur.</p>
 <p class="text-sm mt-2"><strong class="text-white">Affiliation :</strong> Programme non vérifié — nous ne l’affichons pas tant qu’il n’est pas confirmé sur la page officielle.</p>
 <p class="text-sm mt-2"><strong class="text-white">Points forts :</strong> Clari intégré, Cadences, Forecasting</p>
-<p class="mt-4"><a href="https://www.salesloft.com" target="_blank" rel="noopener sponsored" class="inline-block px-4 py-2 rounded-xl text-sm font-semibold bg-indigo-600 text-white">Visiter le site officiel de Salesloft →</a></p>
+<p class="mt-4"><a href="https://www.salesloft.com" target="_blank" rel="noopener sponsored" class="inline-block px-4 py-2 rounded-xl text-sm font-semibold bg-indigo-600 text-white">Visiter le site officiel de Salesloft →</a> <button type="button" onclick="openDetailModal()" class="inline-block px-4 py-2 ml-2 rounded-xl text-sm font-semibold bg-slate-800 text-white border border-slate-700 hover:bg-slate-700">Comparer</button></p>
 </div>
 <h2 class="font-bold text-xl text-white mt-10">Alternatives à Salesloft</h2>
 <ul class="text-sm text-slate-300 list-disc pl-5"><li class="mt-1"><a href="/best-of_revstack/outils/apollo-io/">Apollo.io</a> — Gratuit · dès 49 $/util./mois (annuel)</li><li class="mt-1"><a href="/best-of_revstack/outils/instantly-ai/">Instantly.ai</a> — Dès 47 $/mois (37,60 $ annuel)</li><li class="mt-1"><a href="/best-of_revstack/outils/lemlist/">Lemlist</a> — Dès 69 $/mois (55 $ annuel)</li><li class="mt-1"><a href="/best-of_revstack/outils/smartlead-ai/">Smartlead.ai</a> — Dès 39 $/mois (32 $ annuel)</li><li class="mt-1"><a href="/best-of_revstack/outils/reply-io/">Reply.io</a> — Dès 59 $/mois (49 $ annuel)</li><li class="mt-1"><a href="/best-of_revstack/outils/salesforge/">Salesforge</a> — Dès 149 $/mois (indicatif)</li><li class="mt-1"><a href="/best-of_revstack/outils/amplemarket/">Amplemarket</a> — Dès 300 $/mois (indicatif)</li><li class="mt-1"><a href="/best-of_revstack/outils/outreach/">Outreach</a> — Dès 150 $/mois (indicatif)</li></ul>
@@ -45,5 +45,94 @@
 <p class="text-xs text-slate-600">Certains liens de cette page sont des liens d'affiliation : si vous vous abonnez via ces liens, Best of RevStack peut toucher une commission, sans frais supplémentaires pour vous. Prix affichés en $ US, susceptibles de changer — vérifiez toujours sur le site officiel de l'éditeur avant d'acheter. Taux d'affiliation affichés vérifiés le 14 novembre 2026. Contact : <a href="mailto:degale369@gmail.com">degale369@gmail.com</a></p>
 </footer>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "326925c210134e88821e25a12f0bf9d5"}'></script><!-- End Cloudflare Web Analytics -->
+<!-- Modale « Comparer » (D13) — portée de Gemini (detail-modal / detail-content / openDetailModal / closeDetailModal), adaptée : tableau construit à partir du DOM de cette fiche (liste « Alternatives à … » déjà présente). Aucun chiffre ajouté. -->
+<div id="detail-modal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+  <div class="bg-slate-900 border border-slate-700 rounded-3xl p-6 sm:p-8 max-w-3xl w-full shadow-2xl relative max-h-[90vh] overflow-y-auto">
+    <button type="button" onclick="closeDetailModal()" class="absolute top-5 right-5 text-slate-400 hover:text-white text-lg" aria-label="Fermer">✕</button>
+    <div id="detail-content"></div>
+  </div>
+</div>
+<script>
+// Modale « Comparer » (D13) — portée de Gemini, adaptée aux fiches statiques :
+// les données viennent du DOM de cette page (titre, prix, affiliation, lien officiel
+// et liste « Alternatives à … » déjà présents). Aucune note, aucun avis, aucun chiffre inventé.
+function openDetailModal() {
+  var h1 = document.querySelector('h1');
+  var toolName = h1 ? h1.textContent.split(' : ')[0].trim() : '';
+  var price = '';
+  var affiliation = '';
+  var category = '';
+  var panels = document.querySelectorAll('.glass-panel p');
+  for (var i = 0; i < panels.length; i++) {
+    var t = panels[i].textContent;
+    if (t.indexOf('Prix :') === 0) price = t.slice('Prix :'.length).trim();
+    else if (t.indexOf('Affiliation :') === 0) affiliation = t.slice('Affiliation :'.length).trim();
+    else if (t.indexOf('Catégorie :') === 0) category = t.slice('Catégorie :'.length).trim();
+  }
+  var siteUrl = '';
+  var links = document.querySelectorAll('a');
+  for (var j = 0; j < links.length; j++) {
+    if (links[j].textContent.indexOf('Visiter le site officiel') === 0) { siteUrl = links[j].getAttribute('href'); break; }
+  }
+  var alts = [];
+  var h2s = document.querySelectorAll('h2');
+  for (var k = 0; k < h2s.length; k++) {
+    if (h2s[k].textContent.indexOf('Alternatives à') === 0) {
+      var ul = h2s[k].nextElementSibling;
+      if (ul && ul.tagName === 'UL') {
+        var items = ul.querySelectorAll('li');
+        for (var m = 0; m < items.length; m++) {
+          var a = items[m].querySelector('a');
+          var full = items[m].textContent;
+          var sep = full.indexOf(' — ');
+          alts.push({
+            name: a ? a.textContent.trim() : '',
+            href: a ? a.getAttribute('href') : '',
+            price: sep === -1 ? '' : full.slice(sep + 3).trim()
+          });
+        }
+      }
+    }
+  }
+  function esc(s) {
+    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+  var head = '<tr><th class="text-left px-3 py-2 font-semibold text-slate-400">Outil</th>' +
+    '<th class="text-left px-3 py-2 font-semibold text-white">' + esc(toolName) + ' <span class="text-[10px] px-2 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300 font-medium align-middle">Cet outil</span></th>';
+  for (var n = 0; n < alts.length; n++) {
+    head += '<th class="text-left px-3 py-2 font-semibold"><a href="' + esc(alts[n].href) + '" class="text-indigo-400 hover:text-indigo-300">' + esc(alts[n].name) + '</a></th>';
+  }
+  head += '</tr>';
+  var priceRow = '<tr><td class="px-3 py-2 font-semibold text-slate-400 align-top">Prix</td>' +
+    '<td class="px-3 py-2 text-emerald-400 font-medium align-top">' + esc(price) + '</td>';
+  for (var p = 0; p < alts.length; p++) {
+    priceRow += '<td class="px-3 py-2 text-slate-300 align-top">' + esc(alts[p].price) + '</td>';
+  }
+  priceRow += '</tr>';
+  var affilBlock = affiliation
+    ? '<p class="text-amber-300 text-sm mb-5">Affiliation : ' + esc(affiliation) + '</p>'
+    : '';
+  document.getElementById('detail-content').innerHTML =
+    '<span class="text-xs px-2.5 py-1 rounded-full bg-indigo-500/20 text-indigo-300 font-medium">' + esc(category) + '</span>' +
+    '<h3 class="text-2xl font-display font-bold text-white mt-3 mb-1">Comparer ' + esc(toolName) + '</h3>' +
+    '<p class="text-slate-400 text-sm mb-4">Prix et liens repris de cette fiche et de ses alternatives — sans ajout.</p>' +
+    affilBlock +
+    '<div class="overflow-x-auto rounded-2xl border border-slate-700/80 mb-5">' +
+    '<table class="min-w-full text-sm border-collapse"><thead class="bg-slate-800/60">' + head + '</thead>' +
+    '<tbody>' + priceRow + '</tbody></table></div>' +
+    (siteUrl ? '<a href="' + esc(siteUrl) + '" target="_blank" rel="noopener sponsored" class="inline-block px-4 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold">Visiter le site officiel de ' + esc(toolName) + ' →</a>' : '') +
+    '<p class="text-xs text-slate-500 mt-4">Prix affichés en $ US, susceptibles de changer — vérifiez toujours sur le site officiel de l’éditeur avant d’acheter.</p>';
+  document.getElementById('detail-modal').classList.remove('hidden');
+}
+function closeDetailModal() {
+  document.getElementById('detail-modal').classList.add('hidden');
+}
+document.getElementById('detail-modal').addEventListener('click', function (e) {
+  if (e.target === this) closeDetailModal();
+});
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Escape') closeDetailModal();
+});
+</script>
 </body>
 </html>
