@@ -1,0 +1,12 @@
+{
+  "name": "best-of-revstack",
+  "private": true,
+  "scripts": {
+    "build:css": "tailwindcss -c tailwind.config.cjs -i styles/tailwind.css -o assets/site.css --minify",
+    "check": "python3 scripts/check_site.py",
+    "test": "python3 scripts/check_site.py && python3 scripts/test_calculator.py"
+  },
+  "devDependencies": {
+    "tailwindcss": "3.4.17"
+  }
+}

@@ -25,7 +25,6 @@
   <meta name="twitter:description" content="Comparatif indépendant : cold email, enrichissement, CRM et automatisation." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preconnect" href="https://cdn.tailwindcss.com" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -126,24 +125,9 @@
     ]
   }
   </script>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/best-of_revstack/assets/site.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-            display: ['Plus Jakarta Sans', 'sans-serif']
-          },
-          colors: {
-            obsidian: '#0B0F19'
-          }
-        }
-      }
-    }
-  </script>
+
   <style>
     section[id] { scroll-margin-top: 100px; }
     body { background-color: #0B0F19; color: #F8FAFC; }
@@ -157,6 +141,7 @@
       border: 1px solid rgba(212, 175, 105, 0.55);
     }
   </style>
+<link rel="alternate" type="application/atom+xml" title="Guides Best of RevStack" href="feed.xml">
 </head>
 <body class="min-h-screen font-sans antialiased">
 <header class="sticky top-0 z-40 border-b border-slate-800/80 bg-[#0B0F19]/90 backdrop-blur-lg">
@@ -171,6 +156,7 @@
 <p data-i18n="brand.tagline" class="text-xs text-slate-400">Outils IA Vente & Prospection B2B</p>
 </div>
 </div>
+<a href="guides/" class="px-4 py-2 text-sm text-slate-200">Guides FR</a>
 <a data-i18n="nav.comparatifs" href="comparatifs/" class="px-4 py-2 rounded-xl text-sm font-medium text-slate-200 hover:text-white transition text-center">Comparatifs</a>
 <a data-i18n="nav.audit" href="#audit" class="px-4 py-2 rounded-xl text-sm font-medium text-slate-200 hover:text-white transition text-center">Audit gratuit</a>
 <a data-i18n="nav.sponsor" href="#sponsor" class="px-4 py-2 rounded-xl text-sm font-medium bg-indigo-600 hover:bg-indigo-500 text-white transition text-center">Devenir sponsor</a>
@@ -270,6 +256,7 @@
 </article>
 </section>
 
+<section id="guides" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16"><h2 class="font-display text-2xl font-bold mb-4">Guides pratiques et calcul de rentabilité</h2><p class="text-slate-400 mb-5">Préparez un premier projet et estimez son intérêt avant de choisir un abonnement. Guides en français.</p><div class="grid grid-cols-1 md:grid-cols-3 gap-4"><article class="glass-panel p-5 rounded-2xl"><h3 class="font-bold text-lg"><a class="text-indigo-300" href="/best-of_revstack/guides/automatiser-suivi-prospects-make/">Automatiser le suivi des prospects avec Make : plan de test</a></h3><p class="text-sm text-slate-400 mt-3">Un scénario formulaire → tableau → notification, avec contrôle des doublons, gestion des erreurs et estimation des coûts.</p></article><article class="glass-panel p-5 rounded-2xl"><h3 class="font-bold text-lg"><a class="text-indigo-300" href="/best-of_revstack/guides/newsletter-systeme-io/">Créer une page d’inscription newsletter avec Systeme.io</a></h3><p class="text-sm text-slate-400 mt-3">Une méthode pour présenter une newsletter, recueillir des inscriptions volontaires et vérifier l’accueil, sans acheter de publicité.</p></article><article class="glass-panel p-5 rounded-2xl"><h3 class="font-bold text-lg"><a class="text-indigo-300" href="/best-of_revstack/outils-gratuits/rentabilite-automatisation/">Calculateur de rentabilité d’une automatisation</a></h3><p class="text-sm text-slate-400 mt-3">Comparez le temps économisé, les abonnements, la maintenance et le coût de mise en place. Export CSV et lien partageable, sans inscription.</p></article></div></section>
 <section id="audit" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
 <article class="glass-panel rounded-2xl p-6 sm:p-8">
 <p data-i18n="audit.eyebrow" class="text-xs font-semibold tracking-wide uppercase text-emerald-300 mb-2">Audit gratuit</p>
