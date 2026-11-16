@@ -85,8 +85,12 @@
 </footer>
 <script>
 function num(id) {
-  var v = parseFloat(document.getElementById(id).value);
-  return isFinite(v) && v >= 0 ? v : 0;
+  var input = document.getElementById(id);
+  var v = parseFloat(input.value);
+  if (!Number.isFinite(v)) return 0;
+  var low = input.min === '' ? 0 : Number(input.min);
+  var high = input.max === '' ? Infinity : Number(input.max);
+  return Math.min(high, Math.max(low, v));
 }
 function fmt(n, dec) {
   return n.toLocaleString('fr-CA', { minimumFractionDigits: dec, maximumFractionDigits: dec });

@@ -145,6 +145,7 @@
     }
   </script>
   <style>
+    section[id] { scroll-margin-top: 100px; }
     body { background-color: #0B0F19; color: #F8FAFC; }
     .glass-panel {
       background: rgba(21, 29, 46, 0.78);
@@ -185,13 +186,31 @@
 <h1 data-i18n="hero.title" class="font-display text-4xl sm:text-5xl font-extrabold text-white mb-4">Les meilleurs outils d'IA pour la <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-emerald-400">vente et la prospection B2B</span></h1>
 <p data-i18n="hero.subtitle" class="text-slate-400 text-lg max-w-2xl mx-auto mb-0">Comparatif pour choisir un outil de cold email, d'enrichissement de contacts ou d'automatisation. Une recommandation claire par besoin, puis le catalogue complet.</p>
 </section>
+<section id="demarrer" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12" aria-labelledby="demarrer-titre">
+<h2 id="demarrer-titre" data-i18n="start.title" class="font-display text-2xl font-bold mb-3">Un premier projet concret, sans abonnement payant pour commencer</h2>
+<p data-i18n="start.disclosure" class="text-sm text-slate-400 mb-5">Liens partenaires : une commission peut être versée en cas d’achat attribué au site. Choisissez selon votre besoin, pas selon le programme d’affiliation.</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<article class="glass-panel rounded-2xl p-6">
+<h3 data-i18n="start.make.title" class="font-bold text-xl mb-2">Relier des applications avec Make</h3>
+<p data-i18n="start.make.desc" class="text-slate-300 mb-4">Pour transmettre une demande entre vos outils et éviter une recopie manuelle. Vérifiez les intégrations et testez une seule tâche sur le plan gratuit.</p>
+<p class="mb-4"><a href="outils/make/" data-i18n="start.guide" class="text-indigo-300 underline">Voir le guide et les limites</a></p>
+<a href="https://www.make.com/en/register?pc=bestofrevstack" target="_blank" rel="sponsored noopener noreferrer" data-i18n="start.make.cta" class="inline-flex px-4 py-3 rounded-xl bg-indigo-600 text-white font-semibold">Commencer avec Make gratuitement →</a>
+</article>
+<article class="glass-panel rounded-2xl p-6">
+<h3 data-i18n="start.systeme.title" class="font-bold text-xl mb-2">Créer une page d’inscription avec Systeme.io</h3>
+<p data-i18n="start.systeme.desc" class="text-slate-300 mb-4">Pour présenter une newsletter et recueillir des inscriptions volontaires. Commencez par une page et un message d’accueil, puis vérifiez le parcours.</p>
+<p class="mb-4"><a href="outils/systeme-io/" data-i18n="start.guide" class="text-indigo-300 underline">Voir le guide et les limites</a></p>
+<a href="https://systeme.io/fr?sa=sa0285412185c930a974bc44c8df0c2c76c8c256fc" target="_blank" rel="sponsored noopener noreferrer" data-i18n="start.systeme.cta" class="inline-flex px-4 py-3 rounded-xl bg-indigo-600 text-white font-semibold">Créer mon compte Systeme.io gratuit →</a>
+</article></div>
+<p data-i18n="start.note" class="text-xs text-slate-400 mt-4">Les éditeurs proposent actuellement un accès gratuit. Les limites et conditions restent celles de chaque plateforme. Une inscription gratuite ne garantit pas une commission pour ce site.</p>
+</section>
 <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
 <h2 data-i18n="picks.title" class="font-display text-2xl font-bold mb-2">Quoi choisir selon le besoin</h2>
-<p data-i18n="picks.subtitle" class="text-slate-400 mb-6">Ce sont les recherches qui amènent des gens prêts à s'inscrire. Chaque ligne mène à un outil.</p>
+<p data-i18n="picks.subtitle" class="text-slate-400 mb-6">Commencez par votre besoin. Chaque sélection mène au site officiel ou au lien partenaire de l’outil.</p>
 <div id="picks" class="grid grid-cols-1 md:grid-cols-3 gap-4"></div>
 </section>
 <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center">
-<input type="search" id="search" oninput="filterTools()" data-i18n-ph="search.ph" placeholder="Rechercher un outil ou une alternative (Apollo, Clay, Instantly...)" class="w-full max-w-xl mx-auto px-5 py-4 rounded-2xl bg-slate-900 border border-slate-700 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+<input type="search" aria-label="Rechercher un outil / Search tools" id="search" oninput="filterTools()" data-i18n-ph="search.ph" placeholder="Rechercher un outil ou une alternative (Apollo, Clay, Instantly...)" class="w-full max-w-xl mx-auto px-5 py-4 rounded-2xl bg-slate-900 border border-slate-700 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
 </section>
 </section>
 <section id="simulateur" class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
@@ -262,8 +281,9 @@
 <input type="text" id="audit-entreprise" data-i18n-ph="audit.ph.company" placeholder="Entreprise" class="px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
 <input type="text" id="audit-outils" data-i18n-ph="audit.ph.tools" placeholder="Outils utilisés actuellement" class="px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
 <textarea id="audit-probleme" rows="3" data-i18n-ph="audit.ph.problem" placeholder="Votre plus gros problème (ex. : peu de réponses aux courriels, pipeline qui fuit...)" class="sm:col-span-2 px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
-<button data-i18n="audit.submit" type="submit" class="sm:col-span-2 inline-flex justify-center px-5 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-semibold transition">Envoyer ma demande d'audit</button>
+<button data-i18n="audit.submit" type="submit" class="sm:col-span-2 inline-flex justify-center px-5 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-semibold transition">Préparer mon courriel de demande</button>
 </form>
+<p class="text-xs text-slate-400 mt-3" data-i18n="audit.mailnote">Ce formulaire prépare un courriel dans votre messagerie. Vous devez ensuite l’envoyer ; aucune demande n’est transmise automatiquement.</p>
 <p data-i18n="audit.confirm" id="audit-confirm" class="hidden text-sm text-emerald-300 mt-4">Votre demande s'ouvre dans votre courriel — envoyez-la pour recevoir votre audit.</p>
 </article>
 </section>
@@ -343,8 +363,9 @@ Seul l'emplacement identifié « Sponsor » est payant. Le reste du catalogue n'
 <p data-i18n="ft.rates" class="max-w-2xl mx-auto leading-relaxed mt-3">
 Taux d'affiliation affichés vérifiés le 14 novembre 2026 sur les pages officielles des programmes.
 Prix des outils vérifiés le 14 novembre 2026 sur les pages tarifaires des éditeurs (tarifs en $ US, susceptibles de changer).
-Aucun lien affilié actif pour l'instant.
+Des liens partenaires sont renseignés pour Make et Systeme.io. Les commissions dépendent des conditions et de l’attribution propres à chaque programme.
 </p>
+<p class="mt-3"><a href="confidentialite/" class="text-indigo-400 hover:text-indigo-300">Confidentialité / Privacy</a></p>
 </footer>
 <!-- Modale « Détails » (D13) — portée de Gemini (detail-modal / detail-content) -->
 <div id="detail-modal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 z-50">
@@ -399,16 +420,28 @@ const CATEGORIES_EN = {
 };
 const I18N = {
   fr: {
+    "start.title": "Un premier projet concret, sans abonnement payant pour commencer",
+    "start.disclosure": "Liens partenaires : une commission peut être versée en cas d’achat attribué au site. Choisissez selon votre besoin, pas selon le programme d’affiliation.",
+    "start.make.title": "Relier des applications avec Make",
+    "start.make.desc": "Pour transmettre une demande entre vos outils et éviter une recopie manuelle. Vérifiez les intégrations et testez une seule tâche sur le plan gratuit.",
+    "start.guide": "Voir le guide et les limites",
+    "start.make.cta": "Commencer avec Make gratuitement →",
+    "start.systeme.title": "Créer une page d’inscription avec Systeme.io",
+    "start.systeme.desc": "Pour présenter une newsletter et recueillir des inscriptions volontaires. Commencez par une page et un message d’accueil, puis vérifiez le parcours.",
+    "start.systeme.cta": "Créer mon compte Systeme.io gratuit →",
+    "start.note": "Les éditeurs proposent actuellement un accès gratuit. Les limites et conditions restent celles de chaque plateforme. Une inscription gratuite ne garantit pas une commission pour ce site.",
+
     "meta.title": "Best of RevStack — Meilleurs outils IA vente, cold email et prospection B2B",
     "brand.tagline": "Outils IA Vente & Prospection B2B",
     "nav.comparatifs": "Comparatifs",
     "nav.audit": "Audit gratuit",
     "nav.sponsor": "Devenir sponsor",
+    "audit.mailnote": "Ce formulaire prépare un courriel dans votre messagerie. Vous devez ensuite l’envoyer ; aucune demande n’est transmise automatiquement.",
     "hero.title": "Les meilleurs outils d'IA pour la <span class=\"text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-emerald-400\">vente et la prospection B2B</span>",
     "hero.subtitle": "Comparatif pour choisir un outil de cold email, d'enrichissement de contacts ou d'automatisation. Une recommandation claire par besoin, puis le catalogue complet.",
     "search.ph": "Rechercher un outil ou une alternative (Apollo, Clay, Instantly...)",
     "picks.title": "Quoi choisir selon le besoin",
-    "picks.subtitle": "Ce sont les recherches qui amènent des gens prêts à s'inscrire. Chaque ligne mène à un outil.",
+    "picks.subtitle": "Commencez par votre besoin. Chaque sélection mène au site officiel ou au lien partenaire de l’outil.",
     "picks.view": "Voir",
     "sim.eyebrow": "Simulateur ROI",
     "sim.title": "Simulateur de pipeline et de ROI",
@@ -433,7 +466,7 @@ const I18N = {
     "audit.ph.company": "Entreprise",
     "audit.ph.tools": "Outils utilisés actuellement",
     "audit.ph.problem": "Votre plus gros problème (ex. : peu de réponses aux courriels, pipeline qui fuit...)",
-    "audit.submit": "Envoyer ma demande d'audit",
+    "audit.submit": "Préparer mon courriel de demande",
     "audit.confirm": "Votre demande s'ouvre dans votre courriel — envoyez-la pour recevoir votre audit.",
     "cat.title": "Catalogue des outils",
     "cat.all": "Tous",
@@ -473,17 +506,29 @@ const I18N = {
     "ft.compare": "Voir tous les comparatifs d'outils IA",
     "ft.compareSuffix": " — 244 comparatifs, 51 fiches et 50 alternatives.",
     "ft.disclosure": "Divulgation : certains liens vers les outils sont, ou pourront être, des liens d'affiliation. Si vous vous abonnez via ces liens, Best of RevStack peut toucher une commission, sans frais supplémentaires pour vous. Seul l'emplacement identifié « Sponsor » est payant. Le reste du catalogue n'est pas vendu.",
-    "ft.rates": "Taux d'affiliation affichés vérifiés le 14 novembre 2026 sur les pages officielles des programmes. Prix des outils vérifiés le 14 novembre 2026 sur les pages tarifaires des éditeurs (tarifs en $ US, susceptibles de changer). Aucun lien affilié actif pour l'instant.",
+    "ft.rates": "Taux d'affiliation affichés vérifiés le 14 novembre 2026 sur les pages officielles des programmes. Prix des outils vérifiés le 14 novembre 2026 sur les pages tarifaires des éditeurs (tarifs en $ US, susceptibles de changer). Des liens partenaires sont renseignés pour Make et Systeme.io. Les commissions dépendent des conditions et de l’attribution propres à chaque programme.",
     "modal.affiliation": "Affiliation",
     "modal.visit": "Visiter l'outil ↗",
     "modal.close": "Fermer"
   },
   en: {
+    "start.title": "A practical first project, with a free plan to start",
+    "start.disclosure": "Partner links: this site may earn a commission from qualifying purchases. Choose for your needs, not for the affiliate program.",
+    "start.make.title": "Connect apps with Make",
+    "start.make.desc": "Move a request between your tools without copying it by hand. Check the integrations and test one task on the free plan.",
+    "start.guide": "Read the guide and limitations",
+    "start.make.cta": "Get started with Make for free →",
+    "start.systeme.title": "Build a signup page with Systeme.io",
+    "start.systeme.desc": "Present a newsletter and collect voluntary subscriptions. Start with one page and a welcome message, then check the signup journey.",
+    "start.systeme.cta": "Create a free Systeme.io account →",
+    "start.note": "The vendors currently offer free access. Each platform sets its own limits and terms. A free signup does not guarantee a commission for this site.",
+
     "meta.title": "Best of RevStack — Best AI tools for sales, cold email and B2B prospecting",
     "brand.tagline": "AI Tools for Sales & B2B Prospecting",
     "nav.comparatifs": "Comparisons",
     "nav.audit": "Free audit",
     "nav.sponsor": "Become a sponsor",
+    "audit.mailnote": "This form prepares an email in your mail app. You must send it yourself; no request is submitted automatically.",
     "hero.title": "The best AI tools for <span class=\"text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-emerald-400\">B2B sales and prospecting</span>",
     "hero.subtitle": "Compare tools for cold email, contact enrichment or automation. One clear recommendation per need, then the full catalogue.",
     "search.ph": "Search for a tool or an alternative (Apollo, Clay, Instantly...)",
@@ -513,7 +558,7 @@ const I18N = {
     "audit.ph.company": "Company",
     "audit.ph.tools": "Tools you currently use",
     "audit.ph.problem": "Your biggest problem (e.g. few replies to emails, leaky pipeline...)",
-    "audit.submit": "Send my audit request",
+    "audit.submit": "Prepare my audit request email",
     "audit.confirm": "Your request opens in your email — send it to receive your audit.",
     "cat.title": "Tool catalogue",
     "cat.all": "All",
@@ -553,7 +598,7 @@ const I18N = {
     "ft.compare": "See all AI tool comparisons",
     "ft.compareSuffix": " — 244 comparisons, 51 tool profiles and 50 alternatives.",
     "ft.disclosure": "Disclosure: some links to tools are, or may become, affiliate links. If you subscribe through these links, Best of RevStack may earn a commission, at no extra cost to you. Only the placement labelled “Sponsor” is paid. The rest of the catalogue is not for sale.",
-    "ft.rates": "Affiliation rates shown were verified on 14 November 2026 on the programs’ official pages. Tool prices were verified on 14 November 2026 on the vendors’ pricing pages (prices in US $, subject to change). No active affiliate link for now.",
+    "ft.rates": "Affiliation rates shown were verified on 14 November 2026 on the programs’ official pages. Tool prices were verified on 14 November 2026 on the vendors’ pricing pages (prices in US $, subject to change). Partner links are configured for Make and Systeme.io. Commissions depend on each program’s terms and attribution rules.",
     "modal.affiliation": "Affiliation",
     "modal.visit": "Visit the tool ↗",
     "modal.close": "Close"
@@ -770,7 +815,10 @@ document.getElementById("audit-form").addEventListener("submit", function(e) {
 // comme valeurs d'exemple modifiables, pas comme des faits vérifiés.
 function simNum(id, fallback) {
   const v = parseFloat(document.getElementById(id).value);
-  return isNaN(v) ? fallback : v;
+  const input = document.getElementById(id);
+  const low = input.min === "" ? -Infinity : Number(input.min);
+  const high = input.max === "" ? Infinity : Number(input.max);
+  return Math.min(high, Math.max(low, Number.isFinite(v) ? v : fallback));
 }
 function fmtInt(v) {
   return Math.round(v).toLocaleString("fr-CA");
@@ -780,8 +828,10 @@ function fmtMoney(v) {
 }
 function updateSim() {
   const prospects = simNum("sim-prospects", 1500);
-  const tauxMin = simNum("sim-taux-min", 3);
-  const tauxMax = simNum("sim-taux-max", 4.5);
+  const firstRate = simNum("sim-taux-min", 3);
+  const secondRate = simNum("sim-taux-max", 4.5);
+  const tauxMin = Math.min(firstRate, secondRate);
+  const tauxMax = Math.max(firstRate, secondRate);
   const closing = simNum("sim-taux-closing", 20);
   const valeur = simNum("sim-valeur-client", 1000);
   const cout = simNum("sim-cout-outils", 100);
