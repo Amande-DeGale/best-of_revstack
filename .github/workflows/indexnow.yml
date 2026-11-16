@@ -1,0 +1,22 @@
+name: IndexNow auto-submit
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Submit all sitemap URLs to IndexNow
+        run: |
+          KEY=$(cat revstackai2026indexnow.txt)
+          INDEXNOW_KEY="$KEY" python3 scripts/submit_indexnow.py
